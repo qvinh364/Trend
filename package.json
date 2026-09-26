@@ -1,7 +1,7 @@
 {
-  "name": "ptit-social-trend-copilot",
+  "name": "trend",
   "version": "1.0.0",
-  "description": "Social Trend Radar & Anti PTIT Content Copilot",
+  "description": "Trend - Social Trend Radar & Anti PTIT Content Copilot",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

@@ -1,4 +1,4 @@
-# Anti PTIT Trend Radar & Content Copilot 🐧
+# Trend - Anti PTIT Social Trend Radar & Content Copilot 🐧
 
 Hệ thống theo dõi xu hướng đa nền tảng (TikTok, Threads, Google Trends, Facebook Groups) và trợ lý sáng tạo nội dung tự động chuẩn phong cách **Anti PTIT** dành cho Fanpage *"Hội anti HV công nghệ BƯU ĐIỆN"*.
 
@@ -27,8 +27,8 @@ Hệ thống theo dõi xu hướng đa nền tảng (TikTok, Threads, Google Tre
 
 ### 2. Cài đặt dự án
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/<YOUR_REPO>.git
-cd "Update tin tức"
+git clone https://github.com/qvinh364/Trend.git
+cd Trend
 npm install
 ```
 
