@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anti PTIT – Trend & News Radar</title>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    :root {
+      --primary:     #4f46e5;
+      --primary-l:   #818cf8;
+      --primary-bg:  #eef2ff;
+      --success:     #10b981;
+      --success-bg:  #d1fae5;
+      --danger:      #ef4444;
+      --danger-bg:   #fee2e2;
+      --warning:     #f59e0b;
+      --warning-bg:  #fef3c7;
+      --card-bg:     #ffffff;
+      --page-bg:     #f3f4f6;
+      --text:        #111827;
+      --text-muted:  #6b7280;
+      --border:      #e5e7eb;
+      --shadow:      0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+      --radius:      14px;
+      --radius-sm:   8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background: var(--page-bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 20px rgba(79,70,229,.25);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-logo {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,.2);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .header-title h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-title p {
+      font-size: 0.82rem;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #clock {
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: 6px 12px;
+      letter-spacing: .2px;
+      display: none;
+    }
+    @media (min-width: 640px) { #clock { display: block; } }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+
+    /* ─── CONTAINER ─── */
+    .container {
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ─── STATS GRID ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--border);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    }
+    .stat-card.blue   { border-top-color: var(--primary); }
+    .stat-card.green  { border-top-color: var(--success); }
+    .stat-card.orange { border-top-color: var(--warning); }
+    .stat-card.purple { border-top-color: #a855f7; }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      font-weight: 700;
+    }
+    .stat-value {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-top: 4px;
+      line-height: 1.1;
+    }
+    .stat-card.blue   .stat-value { color: var(--primary); }
+    .stat-card.green  .stat-value { color: var(--success); }
+    .stat-card.orange .stat-value { color: var(--warning); }
+    .stat-card.purple .stat-value { color: #a855f7; }
+    .stat-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ─── SCAN PROGRESS BANNER ─── */
+    .progress-banner {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--primary-l);
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      animation: fadeIn .2s ease;
+    }
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4f46e5, #ec4899);
+      width: 0%;
+      transition: width .3s ease;
+    }
+
+    /* ─── MAIN TWO COLUMNS ─── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ─── SECTION COLUMN ─── */
+    .section-col {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .icon-fb { background: #dbeafe; color: #1d4ed8; }
+    .icon-mxh { background: #fce7f3; color: #be185d; }
+
+    .section-title h2 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .section-title p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Scan Action Buttons */
+    .btn-scan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: all .15s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+    .btn-scan:hover { transform: translateY(-1px); }
+    .btn-scan:active { transform: translateY(1px); }
+    .btn-scan:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-scan-fb { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+    .btn-scan-fb:hover { background: linear-gradient(135deg, #1d4ed8, #1e40af); }
+    .btn-scan-mxh { background: linear-gradient(135deg, #e11d48, #be123c); }
+    .btn-scan-mxh:hover { background: linear-gradient(135deg, #be123c, #9f1239); }
+
+    /* Filter Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 6px;
+      background: var(--page-bg);
+      padding: 4px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 7px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .15s ease;
+      text-align: center;
+    }
+    .tab-btn:hover { color: var(--text); background: rgba(0,0,0,.03); }
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      font-weight: 700;
+    }
+
+    /* Cards Lists */
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      max-height: 750px;
+      padding-right: 4px;
+    }
+    .cards-list::-webkit-scrollbar { width: 5px; }
+    .cards-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+
+    /* Post Card (FB Group) */
+    .fb-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .fb-card:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    }
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .rank-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .rank-1 { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .rank-2 { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+    .rank-3 { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+    .rank-other { background: #f1f5f9; color: #64748b; }
+
+    .tag-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .time-badge {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .card-content {
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-metrics-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      flex-wrap: wrap;
+    }
+    .metrics-stats {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #4b5563;
+      font-weight: 600;
+    }
+    .metrics-stats span {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .score-badge {
+      background: #eef2ff;
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: all .15s ease;
+    }
+    .btn-link-fb {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    .btn-link-fb:hover {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .btn-link-mxh {
+      background: #fff1f2;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+    }
+    .btn-link-mxh:hover {
+      background: #ffe4e6;
+      color: #9f1239;
+    }
+
+    /* Trend Card (TikTok / Threads) */
+    .trend-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .trend-card:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    }
+    .trend-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .trend-idx {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 800;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trend-title-text {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .badge-viral {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #e11d48;
+      background: #ffe4e6;
+      border: 1px solid #fecdd3;
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .search-keyword-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #334155;
+    }
+    .search-keyword-box strong { color: var(--primary); }
+    .trend-desc {
+      font-size: 0.85rem;
+      color: #4b5563;
+      line-height: 1.45;
+    }
+    .trend-signals {
+      background: #faf5ff;
+      border: 1px solid #f3e8ff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      color: #6b21a8;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .trend-signals strong { color: #581c87; }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      display: none;
+      z-index: 100;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="header-logo">🐧</div>
+      <div class="header-title">
+        <h1>ANTI PTIT <span style="font-size: 0.75rem; font-weight: 600; background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 6px;">Trend & News Radar</span></h1>
+        <p>Giám sát thảo luận 4 Group PTIT & Bóc tách Xu hướng MXH TikTok / Threads</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div id="clock">00:00:00</div>
+      <div class="status-badge" id="serverBadge">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ade80;"></span>
+        <span id="serverBadgeText">Server Online</span>
+      </div>
+      <button onclick="openCookieModal()" style="background: rgba(255,255,255,.2); color: #fff; border: 1px solid rgba(255,255,255,.3); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+        <i class="ph ph-key"></i> Cookie FB
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- STATS OVERVIEW CARDS (Style Chấm Công) -->
+    <div class="stats-grid">
+      <div class="stat-card blue">
+        <div class="stat-label">BÀI VIẾT NỘI BỘ (TOP TUẦN)</div>
+        <div class="stat-value" id="statPostsCount">20</div>
+        <div class="stat-sub">4 Nhóm sinh viên • Top 5 bài hot nhất</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-label">TỔNG LƯỢT TƯƠNG TÁC</div>
+        <div class="stat-value" id="statEngagement">2.8K</div>
+        <div class="stat-sub">Reacts + Bình luận + Shares thực tế</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-label">TỪ KHÓA & TREND MXH</div>
+        <div class="stat-value" id="statTrendsCount">10</div>
+        <div class="stat-sub">TikTok & Threads theo tệp 18–25 tuổi</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-label">CHU KỲ GIÁM SÁT</div>
+        <div class="stat-value" style="font-size: 1.5rem; margin-top: 7px;">7 Ngày</div>
+        <div class="stat-sub" id="statLastUpdate">Cập nhật lúc: Vừa xong</div>
+      </div>
+    </div>
+
+    <!-- LIVE SCAN PROGRESS BANNER -->
+    <div class="progress-banner" id="scanProgressBanner">
+      <div class="progress-header">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <i class="ph ph-spinner-gap" style="animation: spin 1s linear infinite; font-size: 1.1rem;"></i>
+          <span id="scanProgressTitle">Đang quét dữ liệu...</span>
+        </span>
+        <span id="scanProgressPercent">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="scanProgressBar"></div>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted);" id="scanProgressSub">Vui lòng không tắt trang web trong quá trình bot làm việc.</p>
+    </div>
+
+    <!-- MAIN TWO COLUMNS (Group FB | Trend MXH) -->
+    <div class="main-grid">
+
+      <!-- CỘT 1: SINH VIÊN PTIT -->
+      <section class="section-col">
+        <div class="section-top">
+          <div class="section-heading">
+            <div class="section-icon icon-fb">
+              <i class="ph-fill ph-users-three"></i>
+            </div>
+            <div class="section-title">
+              <h2>Sinh viên PTIT</h2>
+              <p>Top 5 bài tương tác cao nhất 7 ngày qua</p>
+            </div>
+          </div>
+          <button class="btn-scan btn-scan-fb" id="btnScanFB" onclick="triggerScanFB()">
+            <i class="ph ph-lightning"></i>
+            <span>Quét Group Facebook</span>
+          </button>
+        </div>
+
+        <!-- Group Filter Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-group="cdsv" onclick="switchGroupTab('cdsv', this)">CĐ SV</button>
+          <button class="tab-btn" data-group="thongtin" onclick="switchGroupTab('thongtin', this)">Góc TT</button>
+          <button class="tab-btn" data-group="d26" onclick="switchGroupTab('d26', this)">D26 (2k8)</button>
+          <button class="tab-btn" data-group="cfs" onclick="switchGroupTab('cfs', this)">PTIT CFS</button>
+        </div>
+
+        <!-- Cards List -->
+        <div class="cards-list" id="groupPostsList">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- CỘT 2: TREND MXH -->
+      <section class="section-col">
+        <div class="section-top">
+          <div class="section-heading">
+            <div class="section-icon icon-mxh">
+              <i class="ph-fill ph-flame"></i>
+            </div>
+            <div class="section-title">
+              <h2>Trend MXH</h2>
+              <p>Từ khóa tìm kiếm hot & Trend bùng nổ</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-scan btn-scan-mxh" id="btnScanTikTok" onclick="triggerScanTikTok()" title="Quét riêng biệt xu hướng TikTok">
+              <i class="ph ph-tiktok-logo"></i>
+              <span>Quét TikTok</span>
+            </button>
+            <button class="btn-scan btn-scan-mxh" id="btnScanThreads" onclick="triggerScanThreads()" title="Quét riêng biệt xu hướng Threads" style="background: #0f172a; border-color: #0f172a;">
+              <i class="ph ph-at"></i>
+              <span>Quét Threads</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Platform Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-platform="tiktok" onclick="switchPlatformTab('tiktok', this)">🎵 TikTok VN</button>
+          <button class="tab-btn" data-platform="threads" onclick="switchPlatformTab('threads', this)">🧵 Threads VN</button>
+        </div>
+
+        <!-- Cards List -->
+        <div class="cards-list" id="trendsList">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- COOKIE MODAL -->
+  <div id="modalCookie" style="position: fixed; inset: 0; background: rgba(0,0,0,.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 999; padding: 16px;">
+    <div style="background: #fff; width: 100%; max-width: 500px; border-radius: 14px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.2); display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 style="font-size: 1.1rem; font-weight: 800;">🔑 Cài Đặt Cookie Facebook</h3>
+        <button onclick="closeCookieModal()" style="border: none; background: none; font-size: 1.2rem; cursor: pointer; color: #94a3b8;">&times;</button>
+      </div>
+      <p style="font-size: 0.82rem; color: #64748b; line-height: 1.45;">
+        Dán chuỗi cookie tài khoản Facebook của bạn (lấy từ tiện ích EditThisCookie hoặc F12 Application Cookies) để bot truy cập đọc bài viết và số lượt tương tác trong các nhóm.
+      </p>
+      <textarea id="txtCookie" rows="5" placeholder="c_user=...; xs=...; datr=...;" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: monospace; font-size: 0.78rem; outline: none;"></textarea>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button onclick="closeCookieModal()" style="padding: 8px 16px; border: 1px solid #e2e8f0; background: #fff; border-radius: 8px; font-weight: 600; cursor: pointer;">Hủy</button>
+        <button onclick="saveCookie()" style="padding: 8px 16px; border: none; background: #2563eb; color: #fff; border-radius: 8px; font-weight: 700; cursor: pointer;">Lưu Cookie</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <i class="ph ph-check-circle" style="font-size: 1.2rem; color: #4ade80;"></i>
+    <span id="toastMsg">Thông báo</span>
+  </div>
+
+  <style>
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+  </style>
+
+  <script src="app.js"></script>
+</body>
+</html>

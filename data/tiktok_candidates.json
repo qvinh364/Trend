@@ -1,0 +1,271 @@
+{
+  "scan_id": "disc_1790360044038",
+  "observed_at": "2026-09-25T18:14:04.093Z",
+  "discovery_coverage": "LIMITED",
+  "source_runs": [
+    {
+      "source": "creative_center_7d",
+      "status": "SUCCESS",
+      "raw_items_found": 0,
+      "candidates_kept": 0,
+      "error": null,
+      "note": "Unauthenticated view currently exposes only 3 rows before the login gate. Authenticated access may expose additional rows; exact count has not yet been verified in this environment."
+    },
+    {
+      "source": "creative_center_30d",
+      "status": "SUCCESS",
+      "raw_items_found": 3,
+      "candidates_kept": 3,
+      "error": null,
+      "note": "Unauthenticated view currently exposes only 3 rows before the login gate. Authenticated access may expose additional rows; exact count has not yet been verified in this environment."
+    },
+    {
+      "source": "tiktok_search_ui",
+      "status": "NO_RESULTS",
+      "raw_items_found": 0,
+      "candidates_kept": 0,
+      "error": null,
+      "note": "Extracted via playwright_persistent_authenticated_profile"
+    },
+    {
+      "source": "explore_authenticated",
+      "status": "SUCCESS",
+      "raw_items_found": 4,
+      "candidates_kept": 4,
+      "error": null,
+      "note": "Extracted via playwright_persistent_authenticated_profile"
+    },
+    {
+      "source": "creator_search_insights",
+      "status": "UNAVAILABLE_IN_CURRENT_ENVIRONMENT",
+      "raw_items_found": 0,
+      "candidates_kept": 0,
+      "error": "Could not access Creator Search Insights through the current desktop execution path."
+    }
+  ],
+  "current_candidates_count": 4,
+  "baseline_candidates_count": 3,
+  "current_candidates": [
+    {
+      "candidate_key": "topic:em thích màu blue💙",
+      "feed_index": 1,
+      "observation_id": "obs_1790360044040_1",
+      "canonical_label": "em thích màu blue💙",
+      "aliases": [
+        "em thích màu blue💙"
+      ],
+      "candidate_type_hint": "topic",
+      "type_confidence": "LOW",
+      "nature_hint": "organic_unknown",
+      "freshness_warning": false,
+      "discovery_window": "realtime_agent",
+      "warning_note": null,
+      "discovery_sources": [
+        {
+          "source": "tiktok_explore",
+          "surface": "explore_single_signal",
+          "observed_at": "2026-09-25T18:14:03.417Z",
+          "evidence_url": "https://www.tiktok.com/@hyzen017/video/7666318205563981077",
+          "raw_signal": "Em thích màu blue💙"
+        }
+      ],
+      "reason_for_validation": "Phát hiện trực tiếp qua Agent Browser (tiktok_explore: \"em thích màu blue💙\")",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "authenticated_personalized"
+      ]
+    },
+    {
+      "candidate_key": "topic:relab xe",
+      "feed_index": 2,
+      "observation_id": "obs_1790360044041_2",
+      "canonical_label": "relab xe",
+      "aliases": [
+        "relab xe"
+      ],
+      "candidate_type_hint": "topic",
+      "type_confidence": "LOW",
+      "nature_hint": "organic_unknown",
+      "freshness_warning": false,
+      "discovery_window": "realtime_agent",
+      "warning_note": null,
+      "discovery_sources": [
+        {
+          "source": "tiktok_explore",
+          "surface": "explore_single_signal",
+          "observed_at": "2026-09-25T18:14:03.417Z",
+          "evidence_url": "https://www.tiktok.com/@relabxe/video/7668180662024817928",
+          "raw_signal": "relab xe"
+        }
+      ],
+      "reason_for_validation": "Phát hiện trực tiếp qua Agent Browser (tiktok_explore: \"relab xe\")",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "authenticated_personalized"
+      ]
+    },
+    {
+      "candidate_key": "topic:gianshop2002",
+      "feed_index": 3,
+      "observation_id": "obs_1790360044041_3",
+      "canonical_label": "gianshop2002",
+      "aliases": [
+        "gianshop2002"
+      ],
+      "candidate_type_hint": "topic",
+      "type_confidence": "LOW",
+      "nature_hint": "commerce",
+      "freshness_warning": false,
+      "discovery_window": "realtime_agent",
+      "warning_note": null,
+      "discovery_sources": [
+        {
+          "source": "tiktok_explore",
+          "surface": "explore_single_signal",
+          "observed_at": "2026-09-25T18:14:03.417Z",
+          "evidence_url": "https://www.tiktok.com/@gianshop2002/video/7665973684460457237",
+          "raw_signal": "gianshop2002"
+        }
+      ],
+      "reason_for_validation": "Phát hiện trực tiếp qua Agent Browser (tiktok_explore: \"gianshop2002\")",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "authenticated_personalized"
+      ]
+    },
+    {
+      "candidate_key": "topic:thầy kiêu vật lí",
+      "feed_index": 4,
+      "observation_id": "obs_1790360044041_4",
+      "canonical_label": "thầy kiêu vật lí",
+      "aliases": [
+        "thầy kiêu vật lí"
+      ],
+      "candidate_type_hint": "topic",
+      "type_confidence": "LOW",
+      "nature_hint": "organic_unknown",
+      "freshness_warning": false,
+      "discovery_window": "realtime_agent",
+      "warning_note": null,
+      "discovery_sources": [
+        {
+          "source": "tiktok_explore",
+          "surface": "explore_single_signal",
+          "observed_at": "2026-09-25T18:14:03.417Z",
+          "evidence_url": "https://www.tiktok.com/@thaykieuvatli/video/7659233056766643476",
+          "raw_signal": "Thầy Kiêu Vật Lí"
+        }
+      ],
+      "reason_for_validation": "Phát hiện trực tiếp qua Agent Browser (tiktok_explore: \"thầy kiêu vật lí\")",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "authenticated_personalized"
+      ]
+    }
+  ],
+  "historical_context": [
+    {
+      "candidate_key": "hashtag:tiktokshop99",
+      "observation_id": "obs_1790360044041_5",
+      "canonical_label": "tiktokshop99",
+      "aliases": [
+        "#tiktokshop99"
+      ],
+      "candidate_type_hint": "hashtag",
+      "type_confidence": "LOW",
+      "nature_hint": "commerce",
+      "freshness_warning": true,
+      "discovery_window": "30d",
+      "warning_note": "Chủ đề từ bảng 30 ngày qua (thuộc dữ liệu nền tảng/chiến dịch đã qua đỉnh)",
+      "discovery_sources": [
+        {
+          "source": "creative_center",
+          "period_days": 30,
+          "rank": 1,
+          "industry": "Apparel & Accessories",
+          "posts": 2100000,
+          "views": 3500000000,
+          "observed_at": "2026-09-25T18:14:04.041Z",
+          "evidence_url": "https://ads.tiktok.com/creative/creativeCenter/trends/hashtag?countryCode=VN&period=30&region=VN",
+          "raw_signal": "1 | #tiktokshop99 | Apparel & Accessories | 2.1M | Posts | 3.5B | Views | See analytics"
+        }
+      ],
+      "reason_for_validation": "TikTok Creative Center VN (Bảng 30 ngày: Rank 1, 2,100,000 posts)",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "market_structured"
+      ]
+    },
+    {
+      "candidate_key": "hashtag:bakhi",
+      "observation_id": "obs_1790360044092_6",
+      "canonical_label": "bakhi",
+      "aliases": [
+        "#bakhi"
+      ],
+      "candidate_type_hint": "hashtag",
+      "type_confidence": "LOW",
+      "nature_hint": "organic_unknown",
+      "freshness_warning": true,
+      "discovery_window": "30d",
+      "warning_note": "Chủ đề từ bảng 30 ngày qua (thuộc dữ liệu nền tảng/chiến dịch đã qua đỉnh)",
+      "discovery_sources": [
+        {
+          "source": "creative_center",
+          "period_days": 30,
+          "rank": 2,
+          "industry": null,
+          "posts": 38800,
+          "views": 205100000,
+          "observed_at": "2026-09-25T18:14:04.092Z",
+          "evidence_url": "https://ads.tiktok.com/creative/creativeCenter/trends/hashtag?countryCode=VN&period=30&region=VN",
+          "raw_signal": "2 | #bakhi | 38.8K | Posts | 205.1M | Views | See analytics"
+        }
+      ],
+      "reason_for_validation": "TikTok Creative Center VN (Bảng 30 ngày: Rank 2, 38,800 posts)",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "market_structured"
+      ]
+    },
+    {
+      "candidate_key": "hashtag:sieuhoithuonghieu",
+      "observation_id": "obs_1790360044092_7",
+      "canonical_label": "sieuhoithuonghieu",
+      "aliases": [
+        "#sieuhoithuonghieu"
+      ],
+      "candidate_type_hint": "hashtag",
+      "type_confidence": "LOW",
+      "nature_hint": "possible_campaign",
+      "freshness_warning": true,
+      "discovery_window": "30d",
+      "warning_note": "Chủ đề từ bảng 30 ngày qua (thuộc dữ liệu nền tảng/chiến dịch đã qua đỉnh)",
+      "discovery_sources": [
+        {
+          "source": "creative_center",
+          "period_days": 30,
+          "rank": 3,
+          "industry": null,
+          "posts": 291300,
+          "views": 1300000000,
+          "observed_at": "2026-09-25T18:14:04.092Z",
+          "evidence_url": "https://ads.tiktok.com/creative/creativeCenter/trends/hashtag?countryCode=VN&period=30&region=VN",
+          "raw_signal": "3 | #sieuhoithuonghieu | 291.3K | Posts | 1.3B | Views | See analytics"
+        }
+      ],
+      "reason_for_validation": "TikTok Creative Center VN (Bảng 30 ngày: Rank 3, 291,300 posts)",
+      "screening_status": "PENDING",
+      "discovery_signal_strength": "WEAK",
+      "surface_scope": [
+        "market_structured"
+      ]
+    }
+  ]
+}

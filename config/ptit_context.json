@@ -1,0 +1,41 @@
+{
+  "school_names": [
+    "PTIT",
+    "Học viện Công nghệ Bưu chính Viễn thông",
+    "Bưu điện",
+    "Bưu chính",
+    "Học viện Hoàng gia"
+  ],
+  "student_cohorts": {
+    "D20": "Sinh viên năm cuối / Ra trường",
+    "D21": "Năm 4 - Đang cày đồ án tốt nghiệp, thực tập IT",
+    "D22": "Năm 3 - Bắt đầu đi intern, làm đồ án môn, áp lực nợ môn",
+    "D23": "Năm 2 (2k5) - Đang nếm mùi các môn đại cương và chuyên ngành",
+    "D24": "Năm 1 (2k6) - Đang thích nghi đời sống đại học",
+    "D26": "Tân sinh viên (2k8) - Mới nhập học, ngây thơ, SHCD, tìm trọ"
+  },
+  "system_and_tools": [
+    "qldt (qldt.ptit.edu.vn - Cổng đăng ký tín chỉ huyền thoại hay sập)",
+    "bkel / elearning / phòng đào tạo",
+    "Kỳ thi PE (Practical Exam - Thi thực hành code trên máy)",
+    "Kỳ thi trắc nghiệm trên máy tính"
+  ],
+  "locations_and_lifestyle": [
+    "Km10 Nguyễn Trãi, Hà Đông (Cơ sở Hà Nội)",
+    "Đường Man Thiện, Tăng Nhơn Phú A, TP. Thủ Đức (Cơ sở TP.HCM)",
+    "Chợ đêm Phùng Khoang, ẩm thực Phùng Khoang, ngõ trọ Mộ Lao",
+    "Tắc đường Nguyễn Trãi, tuyến xe bus 01, 02, 19, 21A, 27",
+    "Khuôn viên trường: Sân bóng, KTX, nhà A2, giảng đường B"
+  ],
+  "legendary_subjects": [
+    "Giải tích 1, 2, 3",
+    "Đại số tuyến tính",
+    "Vật lý 1, 2",
+    "C/C++",
+    "Lập trình hướng đối tượng (OOP)",
+    "Cấu trúc dữ liệu và giải thuật",
+    "Kiến trúc máy tính",
+    "Mạng máy tính",
+    "Hệ điều hành"
+  ]
+}

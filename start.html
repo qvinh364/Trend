@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anti PTIT – Trend & News Radar</title>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    :root {
+      --primary:     #4f46e5;
+      --primary-l:   #818cf8;
+      --primary-bg:  #eef2ff;
+      --success:     #10b981;
+      --success-bg:  #d1fae5;
+      --danger:      #ef4444;
+      --danger-bg:   #fee2e2;
+      --warning:     #f59e0b;
+      --warning-bg:  #fef3c7;
+      --card-bg:     #ffffff;
+      --page-bg:     #f3f4f6;
+      --text:        #111827;
+      --text-muted:  #6b7280;
+      --border:      #e5e7eb;
+      --shadow:      0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+      --radius:      14px;
+      --radius-sm:   8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background: var(--page-bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 20px rgba(79,70,229,.25);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-logo {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,.2);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .header-title h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-title p {
+      font-size: 0.82rem;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #clock {
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: 6px 12px;
+      letter-spacing: .2px;
+      display: none;
+    }
+    @media (min-width: 640px) { #clock { display: block; } }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+
+    /* ─── CONTAINER ─── */
+    .container {
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ─── STATS GRID ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--border);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    }
+    .stat-card.blue   { border-top-color: var(--primary); }
+    .stat-card.green  { border-top-color: var(--success); }
+    .stat-card.orange { border-top-color: var(--warning); }
+    .stat-card.purple { border-top-color: #a855f7; }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      font-weight: 700;
+    }
+    .stat-value {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-top: 4px;
+      line-height: 1.1;
+    }
+    .stat-card.blue   .stat-value { color: var(--primary); }
+    .stat-card.green  .stat-value { color: var(--success); }
+    .stat-card.orange .stat-value { color: var(--warning); }
+    .stat-card.purple .stat-value { color: #a855f7; }
+    .stat-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ─── SCAN PROGRESS BANNER ─── */
+    .progress-banner {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--primary-l);
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      animation: fadeIn .2s ease;
+    }
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4f46e5, #ec4899);
+      width: 0%;
+      transition: width .3s ease;
+    }
+
+    /* ─── MAIN TWO COLUMNS ─── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ─── SECTION COLUMN ─── */
+    .section-col {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .icon-fb { background: #dbeafe; color: #1d4ed8; }
+    .icon-mxh { background: #fce7f3; color: #be185d; }
+
+    .section-title h2 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .section-title p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Scan Action Buttons */
+    .btn-scan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: all .15s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+    .btn-scan:hover { transform: translateY(-1px); }
+    .btn-scan:active { transform: translateY(1px); }
+    .btn-scan:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-scan-fb { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+    .btn-scan-fb:hover { background: linear-gradient(135deg, #1d4ed8, #1e40af); }
+    .btn-scan-mxh { background: linear-gradient(135deg, #e11d48, #be123c); }
+    .btn-scan-mxh:hover { background: linear-gradient(135deg, #be123c, #9f1239); }
+
+    /* Filter Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 6px;
+      background: var(--page-bg);
+      padding: 4px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 7px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .15s ease;
+      text-align: center;
+    }
+    .tab-btn:hover { color: var(--text); background: rgba(0,0,0,.03); }
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      font-weight: 700;
+    }
+
+    /* Cards Lists */
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      max-height: 750px;
+      padding-right: 4px;
+    }
+    .cards-list::-webkit-scrollbar { width: 5px; }
+    .cards-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+
+    /* Post Card (FB Group) */
+    .fb-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .fb-card:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    }
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .rank-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .rank-1 { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .rank-2 { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+    .rank-3 { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+    .rank-other { background: #f1f5f9; color: #64748b; }
+
+    .tag-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .time-badge {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .card-content {
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-metrics-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      flex-wrap: wrap;
+    }
+    .metrics-stats {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #4b5563;
+      font-weight: 600;
+    }
+    .metrics-stats span {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .score-badge {
+      background: #eef2ff;
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: all .15s ease;
+    }
+    .btn-link-fb {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    .btn-link-fb:hover {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .btn-link-mxh {
+      background: #fff1f2;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+    }
+    .btn-link-mxh:hover {
+      background: #ffe4e6;
+      color: #9f1239;
+    }
+
+    /* Trend Card (TikTok / Threads) */
+    .trend-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .trend-card:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    }
+    .trend-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .trend-idx {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 800;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trend-title-text {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .badge-viral {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #e11d48;
+      background: #ffe4e6;
+      border: 1px solid #fecdd3;
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .search-keyword-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #334155;
+    }
+    .search-keyword-box strong { color: var(--primary); }
+    .trend-desc {
+      font-size: 0.85rem;
+      color: #4b5563;
+      line-height: 1.45;
+    }
+    .trend-signals {
+      background: #faf5ff;
+      border: 1px solid #f3e8ff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      color: #6b21a8;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .trend-signals strong { color: #581c87; }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      display: none;
+      z-index: 100;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="header-logo">🐧</div>
+      <div class="header-title">
+        <h1>ANTI PTIT <span style="font-size: 0.75rem; font-weight: 600; background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 6px;">Trend & News Radar</span></h1>
+        <p>Giám sát thảo luận 4 Group PTIT & Bóc tách Xu hướng MXH TikTok / Threads</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div id="clock">00:00:00</div>
+      <div class="status-badge" id="serverBadge">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ade80;"></span>
+        <span id="serverBadgeText">Server Online</span>
+      </div>
+      <button onclick="openCookieModal()" style="background: rgba(255,255,255,.2); color: #fff; border: 1px solid rgba(255,255,255,.3); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+        <i class="ph ph-key"></i> Cookie FB
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- STATS OVERVIEW CARDS (Style Chấm Công) -->
+    <div class="stats-grid">
+      <div class="stat-card blue">
+        <div class="stat-label">BÀI VIẾT NỘI BỘ (TOP TUẦN)</div>
+        <div class="stat-value" id="statPostsCount">20</div>
+        <div class="stat-sub">4 Nhóm sinh viên • Top 5 bài hot nhất</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-label">TỔNG LƯỢT TƯƠNG TÁC</div>
+        <div class="stat-value" id="statEngagement">2.8K</div>
+        <div class="stat-sub">Reacts + Bình luận + Shares thực tế</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-label">TỪ KHÓA & TREND MXH</div>
+        <div class="stat-value" id="statTrendsCount">10</div>
+        <div class="stat-sub">TikTok & Threads theo tệp 18–25 tuổi</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-label">CHU KỲ GIÁM SÁT</div>
+        <div class="stat-value" style="font-size: 1.5rem; margin-top: 7px;">7 Ngày</div>
+        <div class="stat-sub" id="statLastUpdate">Cập nhật lúc: Vừa xong</div>
+      </div>
+    </div>
+
+    <!-- LIVE SCAN PROGRESS BANNER -->
+    <div class="progress-banner" id="scanProgressBanner">
+      <div class="progress-header">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <i class="ph ph-spinner-gap" style="animation: spin 1s linear infinite; font-size: 1.1rem;"></i>
+          <span id="scanProgressTitle">Đang quét dữ liệu...</span>
+        </span>
+        <span id="scanProgressPercent">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="scanProgressBar"></div>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted);" id="scanProgressSub">Vui lòng không tắt trang web trong quá trình bot làm việc.</p>
+    </div>
+
+    <!-- MAIN TWO COLUMNS (Group FB | Trend MXH) -->
+    <div class="main-grid">
+
+      <!-- CỘT 1: SINH VIÊN PTIT -->
+      <section class="section-col">
+        <div class="section-top">
+          <div class="section-heading">
+            <div class="section-icon icon-fb">
+              <i class="ph-fill ph-users-three"></i>
+            </div>
+            <div class="section-title">
+              <h2>Sinh viên PTIT</h2>
+              <p>Top 5 bài tương tác cao nhất 7 ngày qua</p>
+            </div>
+          </div>
+          <button class="btn-scan btn-scan-fb" id="btnScanFB" onclick="triggerScanFB()">
+            <i class="ph ph-lightning"></i>
+            <span>Quét Group Facebook</span>
+          </button>
+        </div>
+
+        <!-- Group Filter Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-group="cdsv" onclick="switchGroupTab('cdsv', this)">CĐ SV</button>
+          <button class="tab-btn" data-group="thongtin" onclick="switchGroupTab('thongtin', this)">Góc TT</button>
+          <button class="tab-btn" data-group="d26" onclick="switchGroupTab('d26', this)">D26 (2k8)</button>
+          <button class="tab-btn" data-group="cfs" onclick="switchGroupTab('cfs', this)">PTIT CFS</button>
+        </div>
+
+        <!-- Cards List -->
+        <div class="cards-list" id="groupPostsList">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- CỘT 2: TREND MXH -->
+      <section class="section-col">
+        <div class="section-top">
+          <div class="section-heading">
+            <div class="section-icon icon-mxh">
+              <i class="ph-fill ph-flame"></i>
+            </div>
+            <div class="section-title">
+              <h2>Trend MXH</h2>
+              <p>Từ khóa tìm kiếm hot & Trend bùng nổ</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-scan btn-scan-mxh" id="btnScanTikTok" onclick="triggerScanTikTok()" title="Quét riêng biệt xu hướng TikTok">
+              <i class="ph ph-tiktok-logo"></i>
+              <span>Quét TikTok</span>
+            </button>
+            <button class="btn-scan btn-scan-mxh" id="btnScanThreads" onclick="triggerScanThreads()" title="Quét riêng biệt xu hướng Threads" style="background: #0f172a; border-color: #0f172a;">
+              <i class="ph ph-at"></i>
+              <span>Quét Threads</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Platform Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-platform="tiktok" onclick="switchPlatformTab('tiktok', this)">🎵 TikTok VN</button>
+          <button class="tab-btn" data-platform="threads" onclick="switchPlatformTab('threads', this)">🧵 Threads VN</button>
+        </div>
+
+        <!-- Cards List -->
+        <div class="cards-list" id="trendsList">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- COOKIE MODAL -->
+  <div id="modalCookie" style="position: fixed; inset: 0; background: rgba(0,0,0,.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 999; padding: 16px;">
+    <div style="background: #fff; width: 100%; max-width: 500px; border-radius: 14px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.2); display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 style="font-size: 1.1rem; font-weight: 800;">🔑 Cài Đặt Cookie Facebook</h3>
+        <button onclick="closeCookieModal()" style="border: none; background: none; font-size: 1.2rem; cursor: pointer; color: #94a3b8;">&times;</button>
+      </div>
+      <p style="font-size: 0.82rem; color: #64748b; line-height: 1.45;">
+        Dán chuỗi cookie tài khoản Facebook của bạn (lấy từ tiện ích EditThisCookie hoặc F12 Application Cookies) để bot truy cập đọc bài viết và số lượt tương tác trong các nhóm.
+      </p>
+      <textarea id="txtCookie" rows="5" placeholder="c_user=...; xs=...; datr=...;" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: monospace; font-size: 0.78rem; outline: none;"></textarea>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button onclick="closeCookieModal()" style="padding: 8px 16px; border: 1px solid #e2e8f0; background: #fff; border-radius: 8px; font-weight: 600; cursor: pointer;">Hủy</button>
+        <button onclick="saveCookie()" style="padding: 8px 16px; border: none; background: #2563eb; color: #fff; border-radius: 8px; font-weight: 700; cursor: pointer;">Lưu Cookie</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <i class="ph ph-check-circle" style="font-size: 1.2rem; color: #4ade80;"></i>
+    <span id="toastMsg">Thông báo</span>
+  </div>
+
+  <style>
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+  </style>
+
+  
+  <script id="embeddedData" type="application/json">
+{
+  "group_posts": [
+    {
+      "id": "live_2k5ptit_8_1790065009499",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282556550620186",
+      "content": "Sáng nay bạn nào để quên điện thoại liên hệ nhé Nam thì 1 nụ hôn lốc xoáy, nữ thì thôi",
+      "author": "Bảo Khang",
+      "likes": 623,
+      "comments": 79,
+      "shares": 2,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 16:13",
+      "engagement_score": 704,
+      "created_at": "2026-09-22T08:16:49.499Z",
+      "rank": 1,
+      "is_top_week": true
+    },
+    {
+      "id": "live_2k5ptit_19_1790065009500",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1281362730739568",
+      "content": "T đã bị sốc văn hóa khi học ở PTIT cơ sở Ngọc Trục. Chuyện sẽ không có gì, như thường ngày t sẽ về nhà sau tiết học 19-19r ở trường. NHƯNG KHÔNGGGGGGG. Khi t xuống bãi gửi xe, XE T BỊ KHÓA. Tôi đi hỏi các bác gần đó thì được tin \" CÁC BÁC ĐI ĂN RỒI CHÁU\", tôi cũng ok. Và sau 15p 20p, các bác trở lại....\"TỰ BẮT XE VỀ ĐI, SÁNG MAI QUAY LẠI LẤY XE\". Tôi xin nhắc lại NHÀ TÔI CÁCH TRƯỜNG GẦN 10 CÂY. T đã ngồi đó xin xỏ, năn nỉ 1 tiếng hơn, dù bị bảo l",
+      "author": "Người tham gia ẩn danh",
+      "likes": 363,
+      "comments": 143,
+      "timestamp": "Thứ bảy, 19 Tháng 9, 2026 lúc 21:51",
+      "engagement_score": 510,
+      "created_at": "2026-09-22T08:16:49.500Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 4
+    },
+    {
+      "id": "live_2k5ptit_5_1790065009499",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282557173953457",
+      "content": "Các con ơi ơi học kỹ thuật trường mình nặng và vất vả lắm hay sao mà con trai cô, cô giao việc nhà cho con vì con năm 3 rồi, mà lúc nào cháu cũng bảo với mẹ là con học nặng rồi, đầu óc đâu làm việc nhà. Cô phải dọn phòng cho con trai, đi làm về còn nhặt từng cọng rau mà cô k biết có đúng là cháu học nhiều không. Đóng cửa phong học suốt vì con nói cần yên tĩnh. Cô k hiểu biết nên lên hỏi các con. Các con giúp cô nha.",
+      "author": "BronzeHummingbird8722",
+      "likes": 215,
+      "comments": 75,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 10:35",
+      "engagement_score": 294,
+      "created_at": "2026-09-22T08:16:49.499Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 4
+    },
+    {
+      "id": "live_2k5ptit_23_1790065009500",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282332907309217",
+      "content": "Mọi người ơi, cho tớ xin chút lời khuyên với... Nhưng dạo gần đây, mọi thứ lạnh nhạt đi hẳn. Tần suất nhắn tin thưa dần, những câu chuyện cứ ngắn ngủn và kết thúc trong sự hụt hẫng. Tớ buồn lắm mà con gái thì ngại ngùng, không dám mở lời trước vì sợ bản thân trở nên phiền phức. Theo mọi người, … Xem thêm",
+      "author": "Người tham gia ẩn danh",
+      "likes": 127,
+      "comments": 131,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 08:12",
+      "engagement_score": 267,
+      "created_at": "2026-09-22T08:16:49.500Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 9
+    },
+    {
+      "id": "live_2k5ptit_9_1790065009499",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282728217269686",
+      "content": "xe mới đấy nhể chắc chưa bị bẻ cổ phát nào",
+      "author": "messilovebaycho",
+      "likes": 114,
+      "comments": 30,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 17:58",
+      "engagement_score": 145,
+      "created_at": "2026-09-22T08:16:49.499Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 1
+    },
+    {
+      "id": "live_408571091380061_0_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1451908050379688",
+      "content": "Chính thức ra mắt CLB LGBT - Luôn Giữ Bình Tĩnh Thông Tin: CLB do cá nhân thành lập không liên kết với bất kỳ đơn vị hay nhà trường nào Mục đích: Tạo sân chơi kết nốt các bạn Luôn Giữ Bình Tĩnh 7 Trường ĐH và Học Viện trong khu vực Từ Hầm Chui Thanh Xuân - Nguyễn Trãi đến Hết Đường Trần Phú",
+      "author": "Dr.Chạm",
+      "likes": 557,
+      "comments": 230,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 01:39",
+      "engagement_score": 797,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 1,
+      "is_top_week": true,
+      "shares": 10
+    },
+    {
+      "id": "live_408571091380061_24_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1450797463824080",
+      "content": "Bên hust căng quá",
+      "author": "Người tham gia ẩn danh",
+      "likes": 99,
+      "comments": 11,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 20:46",
+      "engagement_score": 110,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_408571091380061_25_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1452586276978532",
+      "content": "Aura quá yếu? - Bạn muốn có một aura(bá khí) thật mạnh nhưng bản thân không thể toát ra được - Hãy thử những cách sau để gia tăng bá khí lên mức cao",
+      "author": "Lan Trịnh",
+      "likes": 62,
+      "comments": 3,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 21:17",
+      "engagement_score": 72,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 7
+    },
+    {
+      "id": "live_408571091380061_15_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1452610500309443",
+      "content": "FC PTIT CHÍNH THỨC RA QUÂN TẠI SV7 THIÊN KHÔI CUP 2026! Hành trình của những chàng trai CLB Bóng đá Bưu chính – FC PTIT tại SV7 Thiên Khôi Cup 2026 sẽ chính thức bắt đầu vào sáng mai, với đối thủ đầu tiên là Đại học FPT. 09:45 | 22/09/2026 FC PTIT Đại học FPT SVĐ C500 – Hà Đông – Hà Nội Một trận … Xem thêm",
+      "author": "Viết Chiến",
+      "likes": 48,
+      "comments": 6,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 21:45",
+      "engagement_score": 54,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_408571091380061_23_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1452539773649849",
+      "content": "Mn cho mình hỏi bằng khá có lên skhau nhận bằng ko\n hay chỉ giỏi với xs ạ",
+      "author": "Người tham gia ẩn danh",
+      "likes": 17,
+      "comments": 5,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 22:48",
+      "engagement_score": 23,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 1
+    },
+    {
+      "id": "live_1605563914144178_17_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1819248096109091",
+      "content": "Cập nhật tình hình PTIT hiện tạiii\n cháy thí nhỏ",
+      "author": "Thu Phương",
+      "likes": 135,
+      "comments": 7,
+      "timestamp": "Thứ Sáu, 18 Tháng 9, 2026 lúc 23:21",
+      "engagement_score": 144,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 1,
+      "is_top_week": true,
+      "shares": 2
+    },
+    {
+      "id": "live_1605563914144178_0_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1822288609138373",
+      "content": "Sinh viên chắc chắn sẽ cần Nhắn c add nhóm hỗ trợ sv săn hbong nha",
+      "author": "Mai Phạm Diễm Quỳnh",
+      "likes": 43,
+      "comments": 2,
+      "timestamp": "Thứ Ba, 22 Tháng 9, 2026 lúc 10:13",
+      "engagement_score": 69,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 24
+    },
+    {
+      "id": "live_1605563914144178_8_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1821466195887281",
+      "content": "Tân sinh viên của hiện tại: 1 tuần về quê với mẹ 1 lần",
+      "author": "Đặng HồngAnh",
+      "likes": 36,
+      "comments": 5,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 13:14",
+      "engagement_score": 41,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_1605563914144178_16_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1817314092969158",
+      "content": "em được 685 TADV thì em được miễn những course nào ạ",
+      "author": "Quốc Thanh",
+      "likes": 18,
+      "comments": 11,
+      "timestamp": "Thứ Năm, 17 Tháng 9, 2026 lúc 07:32",
+      "engagement_score": 29,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_1605563914144178_20_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1819084869458747",
+      "content": "Vâng rấtt ngay đâyy thôi",
+      "author": "Mai Phạm Diễm Quỳnh",
+      "likes": 23,
+      "comments": 1,
+      "timestamp": "Thứ Sáu, 18 Tháng 9, 2026 lúc 18:44",
+      "engagement_score": 24,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_11_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1460408159277014",
+      "content": "TÔI ở phòng 504 ktx B5 hôm nay lên đây tuyển bạn gái anime : yêu cầu : -biết nói tiếng nhật -biết cosplay",
+      "author": "vuatoan2k8",
+      "likes": 30,
+      "comments": 50,
+      "timestamp": "Thứ Năm, 17 Tháng 9, 2026 lúc 23:53",
+      "engagement_score": 80,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 1,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_6_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1463338858983944",
+      "content": "Cần tìm một bạn nam làm người yêu đi chơi trung thu qua trung thu chia tay",
+      "author": "Người tham gia ẩn danh",
+      "likes": 28,
+      "comments": 47,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 19:54",
+      "engagement_score": 77,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 2
+    },
+    {
+      "id": "live_confessions.ptit_3_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1463352572315906",
+      "content": "Hi tâm sự xíu đc khum. Mình và người yêu quen nhau được 2 năm. Tình cảm thì vẫn còn, tụi mình cũng từng rất nghiêm túc với nhau. Nhưng dạo gần đây, hai đứa bắt đầu bất đồng khá nhiều về chuyện thân mật. Mình thì chưa thật sự sẵn sàng. Mình muốn giữ những giới hạn mà bản thân cảm thấy an toàn và thoải mái. Còn anh ấy lại nghĩ chuyện đó rất quan trọng trong một mối quan hệ, kiểu yêu nhau lâu rồi thì nên có sự gần gũi hơn. Điều làm mình dằn vặt nhất",
+      "author": "Người tham gia ẩn danh",
+      "likes": 25,
+      "comments": 27,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 17:23",
+      "engagement_score": 52,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_17_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1461916485792848",
+      "content": "[OFFLINE]\nGIẢI ĐẤU FREE FIRE SINH VIÊN HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG\nHOÀN TOÀN KHÔNG CÓ LỆ PHÍ KHI THAM GIA\nĐây không chỉ là giải đấu… đây còn là sân chơi để sinh viên HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG giao lưu, thể hiện kỹ năng và săn thưởng kim cương cực đỉnh!\n TH… Xem thêm",
+      "author": "Phuc Xuan",
+      "likes": 15,
+      "comments": 34,
+      "timestamp": "Chủ Nhật, 20 Tháng 9, 2026 lúc 00:10",
+      "engagement_score": 49,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_7_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1463453115639185",
+      "content": "Cho em xin intu anh đẹp zai aura này với ạ, thấy ảnh đứng 1 mình ngầu quá",
+      "author": "Người tham gia ẩn danh",
+      "likes": 18,
+      "comments": 7,
+      "timestamp": "Thứ Ba, 22 Tháng 9, 2026 lúc 10:52",
+      "engagement_score": 25,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 0
+    }
+  ],
+  "trends": {
+    "google": [
+      {
+        "id": "gt_0_1790168028668",
+        "platform": "google",
+        "title": "lịch thi đấu fifa asian cup",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Việt Nam đến Indonesia, bắt đầu FIFA ASEAN Cup"
+        ],
+        "link": [
+          "https://vnexpress.net/viet-nam-den-indonesia-bat-dau-fifa-asean-cup-5123839.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 05:30:00 -0700",
+        "category": "Giáo dục & Thi cử",
+        "relevance_score": 95,
+        "relevance_tier": "high",
+        "pivot_angle": "Trúng tâm điểm sinh viên: Áp dụng so sánh trực tiếp với tình hình thi cử, học bổng hoặc điểm số tại PTIT.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_1_1790168028668",
+        "platform": "google",
+        "title": "bảo hiểm y tế",
+        "viral_metrics": "2000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Dự kiến bổ sung thuốc ung thư thế hệ mới vào danh mục bảo hiểm y tế chi trả"
+        ],
+        "link": [
+          "https://kenh14.vn/du-kien-bo-sung-thuoc-ung-thu-the-he-moi-vao-danh-muc-bao-hiem-y-te-chi-tra-215260923091001141.chn"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:40:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_2_1790168028668",
+        "platform": "google",
+        "title": "đội tuyển bóng đá u-23 quốc gia kyrgyzstan đấu với u-23 hồng kông",
+        "viral_metrics": "1000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Nhận định bóng đá U23 Kyrgyzstan vs U23 Hong Kong, 17h30 ngày 23/9: Gỡ gạc danh dự"
+        ],
+        "link": [
+          "https://bongdaplus.vn/asian-games/nhan-dinh-bong-da-u23-kyrgyzstan-vs-u23-hong-kong-17h30-ngay-23-9-go-gac-danh-du-5171362609.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:40:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_3_1790168028668",
+        "platform": "google",
+        "title": "dự báo",
+        "viral_metrics": "200000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Mưa lớn ở Nam bộ kéo dài đến khi nào?"
+        ],
+        "link": [
+          "https://thanhnien.vn/mua-lon-o-nam-bo-keo-dai-den-khi-nao-185260923122215352.htm"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:20:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_4_1790168028668",
+        "platform": "google",
+        "title": "u-23 nhật bản đấu với u-23 thái lan",
+        "viral_metrics": "20000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Trực tiếp bóng đá U23 Nhật Bản - U23 Thái Lan: \"Samurai xanh\" vượt lên (ASIAD)"
+        ],
+        "link": [
+          "https://www.24h.com.vn/bong-da/truc-tiep-bong-da-u23-nhat-ban-u23-thai-lan-chu-nha-lieu-co-thi-uy-suc-manh-asiad-c48a1797041.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:10:00 -0700",
+        "category": "Công nghệ & Game",
+        "relevance_score": 92,
+        "relevance_tier": "high",
+        "pivot_angle": "Khối ngành thế mạnh PTIT (CNTT, Game): Khen hoặc cà khịa sản phẩm dưới góc nhìn của một lập trình viên / dev Bưu Chính.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_5_1790168028668",
+        "platform": "google",
+        "title": "xe điện",
+        "viral_metrics": "2000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Ôtô điện giá 123 triệu đồng sắp bán tại Việt Nam"
+        ],
+        "link": [
+          "https://vnexpress.net/oto-dien-gia-123-trieu-dong-sap-ban-tai-viet-nam-5123710.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:10:00 -0700",
+        "category": "Kinh tế & Đời sống",
+        "relevance_score": 88,
+        "relevance_tier": "high",
+        "pivot_angle": "Chuyện tiền nong sinh viên: Nối sang chi phí sinh hoạt, cơm trọ Phùng Khoang và áp lực tăng học phí của trường.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_6_1790168028668",
+        "platform": "google",
+        "title": "lãi suất ngân hàng hôm nay",
+        "viral_metrics": "1000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Lãi suất ngân hàng tháng 9/2026: Thêm nhiều ngân hàng trả lãi tiết kiệm trên 9%"
+        ],
+        "link": [
+          "https://vnexpress.net/them-nhieu-ngan-hang-tra-lai-tiet-kiem-tren-9-5123534.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 01:50:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_7_1790168028668",
+        "platform": "google",
+        "title": "bảo hiểm",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Đề xuất đưa tài xế công nghệ vào diện đóng bảo hiểm xã hội bắt buộc"
+        ],
+        "link": [
+          "https://vnexpress.net/de-xuat-dua-tai-xe-cong-nghe-vao-dien-dong-bao-hiem-xa-hoi-bat-buoc-5123595.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 01:00:00 -0700",
+        "category": "Công nghệ & Game",
+        "relevance_score": 92,
+        "relevance_tier": "high",
+        "pivot_angle": "Khối ngành thế mạnh PTIT (CNTT, Game): Khen hoặc cà khịa sản phẩm dưới góc nhìn của một lập trình viên / dev Bưu Chính.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_8_1790168028668",
+        "platform": "google",
+        "title": "đỗ hoàng hên",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Hoàng Hên bị giữ lại kiểm tra an ninh trước giờ đội tuyển Việt Nam đi Indonesia"
+        ],
+        "link": [
+          "https://tuoitre.vn/hoang-hen-bi-giu-lai-kiem-tra-an-ninh-truoc-gio-doi-tuyen-viet-nam-di-indonesia-100260923082539675.htm"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 00:20:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_9_1790168028668",
+        "platform": "google",
+        "title": "xe đạp điện",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Cô gái 18 tuổi bị khởi tố sau vụ xe đạp điện tông cụ bà tử vong"
+        ],
+        "link": [
+          "https://vietnamnet.vn/co-gai-18-tuoi-bi-khoi-to-sau-vu-xe-dap-dien-tong-cu-ba-tu-vong-2557850.html"
+        ],
+        "pubDate": "Tue, 22 Sep 2026 21:10:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      }
+    ],
+    "tiktok": [
+      {
+        "id": "tt_live_1790245423071_1",
+        "platform": "tiktok",
+        "title": "Trend: \"trend tiktok vn\" (Hot Search)",
+        "search_keyword": "trend tiktok vn",
+        "type": "Format / Sound lặp lại",
+        "sound": "Âm thanh thịnh hành trên TikTok VN",
+        "viral_metrics": "17.8K • Nhiều Creator cùng tham gia",
+        "viral_score": 94,
+        "description": "Em có bàn tay (DC:@Anh Chủ OTea) #phattrann #fyp #xuhuong #tiktokdancevn",
+        "link": "https://www.tiktok.com/@huuphattran3/video/7681656126114467093",
+        "category": "Xu hướng TikTok VN",
+        "sample_videos_count": 2,
+        "created_at": "2026-09-24T10:23:43.071Z"
+      },
+      {
+        "id": "tt_live_1790245428010_2",
+        "platform": "tiktok",
+        "title": "Trend: \"sinh vien gen z\" (Hot Search)",
+        "search_keyword": "sinh vien gen z",
+        "type": "Format / Sound lặp lại",
+        "sound": "Âm thanh thịnh hành trên TikTok VN",
+        "viral_metrics": "1825 • Nhiều Creator cùng tham gia",
+        "viral_score": 96,
+        "description": "Team Gen Z nào đang ấp ủ những ý tưởng \"khủng\" thì đừng ngần ngại thử sức ở mùa sau nhé! 💪",
+        "link": "https://www.tiktok.com/@nhatkycuameichan/video/7595915226269142290",
+        "category": "Xu hướng TikTok VN",
+        "sample_videos_count": 2,
+        "created_at": "2026-09-24T10:23:48.010Z"
+      },
+      {
+        "id": "tt_live_1790245433243_3",
+        "platform": "tiktok",
+        "title": "Trend: \"review phong tro\" (Hot Search)",
+        "search_keyword": "review phong tro",
+        "type": "Format / Sound lặp lại",
+        "sound": "Âm thanh thịnh hành trên TikTok VN",
+        "viral_metrics": "3384 • Nhiều Creator cùng tham gia",
+        "viral_score": 96,
+        "description": "🏡 Phòng mới keng 100%, nội thất full bài! ✨",
+        "link": "https://www.tiktok.com/@binhifrdz/video/7652617230089506056",
+        "category": "Xu hướng TikTok VN",
+        "sample_videos_count": 3,
+        "created_at": "2026-09-24T10:23:53.243Z"
+      }
+    ],
+    "threads": [
+      {
+        "id": "th_live_1790245442618_1",
+        "platform": "threads",
+        "author": "@threads_community",
+        "title": "Chủ đề hot: \"áp lực tài chính sinh viên\"",
+        "search_keyword": "áp lực tài chính sinh viên",
+        "content": "Topic \"áp lực tài chính sinh viên\" đang thu hút hàng ngàn lượt tương tác và tranh cãi trên Threads.",
+        "viral_metrics": "Hàng ngàn thảo luận • Tương tác cao",
+        "viral_score": 97,
+        "link": "https://www.threads.net/search?q=%C3%A1p%20l%E1%BB%B1c%20t%C3%A0i%20ch%C3%ADnh%20sinh%20vi%C3%AAn",
+        "category": "Tranh cãi & Đời sống Gen Z",
+        "created_at": "2026-09-24T10:24:02.618Z"
+      },
+      {
+        "id": "th_live_1790245445668_2",
+        "platform": "threads",
+        "author": "@threads_community",
+        "title": "Chủ đề hot: \"chuyện phòng trọ hà nội\"",
+        "search_keyword": "chuyện phòng trọ hà nội",
+        "content": "Topic \"chuyện phòng trọ hà nội\" đang thu hút hàng ngàn lượt tương tác và tranh cãi trên Threads.",
+        "viral_metrics": "Hàng ngàn thảo luận • Tương tác cao",
+        "viral_score": 94,
+        "link": "https://www.threads.net/search?q=chuy%E1%BB%87n%20ph%C3%B2ng%20tr%E1%BB%8D%20h%C3%A0%20n%E1%BB%99i",
+        "category": "Tranh cãi & Đời sống Gen Z",
+        "created_at": "2026-09-24T10:24:05.668Z"
+      },
+      {
+        "id": "th_live_1790245451484_3",
+        "platform": "threads",
+        "author": "@threads_community",
+        "title": "Chủ đề hot: \"thực tập sinh it\"",
+        "search_keyword": "thực tập sinh it",
+        "content": "1m",
+        "viral_metrics": "Hàng ngàn thảo luận • Tương tác cao",
+        "viral_score": 97,
+        "link": "https://www.threads.com/@dotuimayeptao.kakaa/post/DdqqQPSCYCJ",
+        "category": "Tranh cãi & Đời sống Gen Z",
+        "created_at": "2026-09-24T10:24:11.484Z"
+      }
+    ]
+  }
+}
+  </script>
+  <script>
+    const EMBEDDED_DATA = JSON.parse(document.getElementById('embeddedData').textContent);
+    // ─── STATE MANAGEMENT ───────────────────────────────────────────
+const state = {
+  groupPosts: [],
+  trends: { tiktok: [], threads: [] },
+  stats: {},
+  currentGroupFilter: 'cdsv',
+  currentPlatform: 'tiktok',
+  isServerOnline: false,
+  scanPollingTimer: null
+};
+
+// ─── HELPERS ────────────────────────────────────────────────────
+function formatMetric(num) {
+  if (!num) return '0';
+  if (num >= 1000) return (num / 1000).toFixed(1).replace('.0', '') + 'K';
+  return Number(num).toLocaleString('vi-VN');
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function showToast(msg, isSuccess = true) {
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  if (!toast) return;
+
+  toastMsg.textContent = msg;
+  toast.style.display = 'flex';
+  toast.style.backgroundColor = isSuccess ? '#064e3b' : '#7f1d1d';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => { toast.style.display = 'none'; }, 4000);
+}
+
+// ─── CLOCK ──────────────────────────────────────────────────────
+function startClock() {
+  const clockEl = document.getElementById('clock');
+  function update() {
+    const now = new Date();
+    if (clockEl) {
+      clockEl.textContent = now.toLocaleTimeString('vi-VN');
+    }
+  }
+  update();
+  setInterval(update, 1000);
+}
+
+// ─── SERVER STATUS & API CALLS ──────────────────────────────────
+async function checkServerStatus() {
+  const badge = document.getElementById('serverBadge');
+  const badgeText = document.getElementById('serverBadgeText');
+
+  try {
+    const res = await fetch('http://localhost:3000/api/stats', { signal: AbortSignal.timeout(2000) });
+    if (res.ok) {
+      state.isServerOnline = true;
+      if (badge) {
+        badge.style.background = 'rgba(74, 222, 128, 0.25)';
+        badge.style.borderColor = 'rgba(74, 222, 128, 0.4)';
+      }
+      if (badgeText) badgeText.textContent = 'Server Online';
+      return true;
+    }
+  } catch (e) {
+    state.isServerOnline = false;
+    if (badge) {
+      badge.style.background = 'rgba(239, 68, 68, 0.25)';
+      badge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+    }
+    if (badgeText) badgeText.textContent = 'Server Offline';
+    return false;
+  }
+}
+
+async function loadAllData() {
+  try {
+    const [postsRes, trendsRes, statsRes] = await Promise.all([
+      fetch('http://localhost:3000/api/group-posts'),
+      fetch('http://localhost:3000/api/trends'),
+      fetch('http://localhost:3000/api/stats')
+    ]);
+
+    const postsData = await postsRes.json();
+    const trendsData = await trendsRes.json();
+    const statsData = await statsRes.json();
+
+    if (postsData.success && Array.isArray(postsData.data)) {
+      state.groupPosts = postsData.data;
+      renderGroupPosts();
+    }
+
+    if (trendsData.success && trendsData.data) {
+      state.trends = trendsData.data;
+      renderTrends();
+    }
+
+    if (statsData.success && statsData.data) {
+      state.stats = statsData.data;
+      renderStats();
+    }
+  } catch (err) {
+    console.warn('Lỗi load dữ liệu:', err);
+  }
+}
+
+// ─── RENDER STATS OVERVIEW ──────────────────────────────────────
+function renderStats() {
+  const s = state.stats;
+  if (!s) return;
+
+  const statPosts = document.getElementById('statPostsCount');
+  const statEngagement = document.getElementById('statEngagement');
+  const statTrends = document.getElementById('statTrendsCount');
+  const statLastUpdate = document.getElementById('statLastUpdate');
+
+  if (statPosts) statPosts.textContent = s.totalPosts || state.groupPosts.length || '20';
+  if (statEngagement) statEngagement.textContent = formatMetric(s.totalEngagement || 2400);
+  if (statTrends) statTrends.textContent = s.totalTrends || (state.trends.tiktok?.length + state.trends.threads?.length) || '10';
+  if (statLastUpdate) {
+    const d = s.lastUpdated ? new Date(s.lastUpdated) : new Date();
+    statLastUpdate.textContent = `Cập nhật lúc: ${d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })} ${d.toLocaleDateString('vi-VN')}`;
+  }
+}
+
+// ─── RENDER GROUP POSTS ─────────────────────────────────────────
+function renderGroupPosts() {
+  const container = document.getElementById('groupPostsList');
+  if (!container) return;
+
+  let filtered = state.groupPosts;
+  const filter = state.currentGroupFilter;
+
+  if (filter === 'cdsv') {
+    filtered = filtered.filter(p => p.group_id === '2k5ptit' || (p.source_group && (p.source_group.includes('sinh viên') || p.source_group.includes('2k5') || p.source_group.includes('CĐ SV'))));
+  } else if (filter === 'thongtin') {
+    filtered = filtered.filter(p => p.group_id === '408571091380061' || (p.source_group && p.source_group.includes('thông tin')));
+  } else if (filter === 'd26') {
+    filtered = filtered.filter(p => p.group_id === '1605563914144178' || (p.source_group && p.source_group.includes('D26')));
+  } else if (filter === 'cfs') {
+    filtered = filtered.filter(p => p.group_id === 'confessions.ptit' || (p.source_group && (p.source_group.includes('Confessions') || p.source_group.includes('CFS'))));
+  }
+
+  if (!filtered || filtered.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 40px 16px; color: #94a3b8; font-size: 0.85rem;">
+        <i class="ph ph-folder-open" style="font-size: 2rem; display: block; margin-bottom: 8px;"></i>
+        Chưa có bài viết nào trong nhóm này. Hãy bấm <strong>Quét Group Facebook</strong> để cập nhật.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map((post, idx) => {
+    const rank = post.rank || (idx + 1);
+    const rankClass = rank === 1 ? 'rank-1' : (rank === 2 ? 'rank-2' : (rank === 3 ? 'rank-3' : 'rank-other'));
+    const rankIcon = rank === 1 ? '🏆' : (rank === 2 ? '🥈' : (rank === 3 ? '🥉' : `#${rank}`));
+    const likes = post.likes || 0;
+    const comments = post.comments || 0;
+    const shares = post.shares || 0;
+    const totalScore = post.engagement_score || (likes + comments + shares);
+    const fbUrl = post.source_url || '#';
+
+    return `
+      <div class="fb-card">
+        <div class="card-meta-row">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span class="rank-badge ${rankClass}">${rankIcon} Top ${rank} Tuần</span>
+            <span class="tag-badge">${escapeHtml(post.tag || 'Thảo luận')}</span>
+          </div>
+          <span class="time-badge">${escapeHtml(post.timestamp || 'Trong tuần qua')}</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; color: #1e293b;">
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: #e0e7ff; color: #4338ca; display: flex; align-items: center; justify-content: center; font-size: 11px;">
+            ${(post.author || 'U').charAt(0).toUpperCase()}
+          </div>
+          <span>${escapeHtml(post.author || 'Thành viên Group')}</span>
+        </div>
+
+        <p class="card-content">${escapeHtml(post.content)}</p>
+
+        <div class="card-metrics-row">
+          <div class="metrics-stats">
+            <span title="Lượt thích">👍 ${formatMetric(likes)}</span>
+            <span title="Lượt bình luận">💬 ${formatMetric(comments)}</span>
+            <span title="Lượt chia sẻ">↪️ ${formatMetric(shares)}</span>
+            <span class="score-badge" title="Tổng React + Comment + Share">⭐ ${formatMetric(totalScore)}</span>
+          </div>
+
+          <a href="${escapeHtml(fbUrl)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-link-fb" title="Mở bài viết thật trên Facebook">
+            <span>Xem bài trên FB</span>
+            <i class="ph ph-arrow-square-out"></i>
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── RENDER TRENDS ──────────────────────────────────────────────
+function renderTrends() {
+  const container = document.getElementById('trendsList');
+  if (!container) return;
+
+  const platform = state.currentPlatform;
+  const list = state.trends[platform] || [];
+
+  if (!list || list.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 40px 16px; color: #94a3b8; font-size: 0.85rem;">
+        <i class="ph ph-fire" style="font-size: 2rem; display: block; margin-bottom: 8px;"></i>
+        Chưa có dữ liệu xu hướng. Hãy bấm <strong>Quét Trend MXH</strong> để bot bóc tách.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = list.map((item, idx) => {
+    const isTikTok = platform === 'tiktok';
+
+    if (isTikTok) {
+      const videoUrl = item.video_url || item.link || 'https://www.tiktok.com';
+      const keyword = item.search_keyword || item.title;
+      const signals = item.signals || item.sound || 'Format POV / Sound lặp lại giữa nhiều Creator';
+      const videoCount = item.video_count || '100.000+ video tham gia';
+      const viralTime = item.latest_viral_time || 'Trong 24 giờ qua';
+
+      return `
+        <div class="trend-card">
+          <div class="trend-header-row">
+            <div class="trend-idx">${idx + 1}</div>
+            <div class="trend-title-text" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
+            <span class="badge-viral">🔥 Bùng nổ</span>
+          </div>
+
+          <div class="search-keyword-box">
+            <i class="ph ph-magnifying-glass"></i>
+            <span>Từ khóa tìm kiếm nhiều nhất: <strong>"${escapeHtml(keyword)}"</strong></span>
+          </div>
+
+          <p class="trend-desc">${escapeHtml(item.description || item.content || '')}</p>
+
+          <div class="trend-signals">
+            <div><strong>Tín hiệu nhận diện:</strong> ${escapeHtml(signals)}</div>
+            <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-top: 4px; padding-top: 4px; border-top: 1px dashed #e9d5ff;">
+              <span><strong>Số lượng video:</strong> ${escapeHtml(videoCount)}</span>
+              <span><strong>Viral gần nhất:</strong> ⏰ ${escapeHtml(viralTime)}</span>
+            </div>
+          </div>
+
+          <div class="card-metrics-row">
+            <span style="font-size: 0.75rem; color: #0f172a; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+              <i class="ph ph-tiktok-logo"></i>
+              TikTok VN
+            </span>
+
+            <a href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-link-mxh" title="Mở xem trực tiếp video tiêu biểu trên TikTok">
+              <i class="ph ph-play-circle"></i>
+              <span>Xem video TikTok gốc</span>
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    } else {
+      // Threads
+      const postUrl = item.post_url || item.link || 'https://www.threads.net';
+      const keyword = item.search_keyword || item.title;
+      const searchVolume = item.search_volume || '40.000+ lượt tìm kiếm trong 3 ngày qua';
+      const topicSummary = item.topic_summary || item.content || item.description || '';
+      const engagement = item.engagement_metrics || item.viral_metrics || 'Hàng ngàn thảo luận';
+      const author = item.author || '@threads_community';
+
+      return `
+        <div class="trend-card">
+          <div class="trend-header-row">
+            <div class="trend-idx">${idx + 1}</div>
+            <div class="trend-title-text" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
+            <span class="badge-viral" style="background: #fdf2f8; color: #be185d; border-color: #fbcfe8;">⚡ Đang bàn tán</span>
+          </div>
+
+          <div class="search-keyword-box">
+            <i class="ph ph-trend-up"></i>
+            <span>Từ khóa hot 3 ngày: <strong>"${escapeHtml(keyword)}"</strong></span>
+          </div>
+
+          <div style="font-size: 0.78rem; color: #4338ca; background: #eef2ff; border-radius: 6px; padding: 4px 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+            <i class="ph ph-chart-line-up"></i>
+            <span>Quy mô tìm kiếm: <strong>${escapeHtml(searchVolume)}</strong></span>
+          </div>
+
+          <p class="trend-desc" style="margin-top: 2px;"><strong>Chủ đề bàn luận:</strong> ${escapeHtml(topicSummary)}</p>
+
+          <div class="trend-signals" style="background: #f8fafc; border-color: #e2e8f0; color: #334155;">
+            <div><strong>Tác giả / Thread chính:</strong> <span style="color: #4f46e5; font-weight: 700;">${escapeHtml(author)}</span></div>
+            <div><strong>Quy mô tương tác:</strong> ${escapeHtml(engagement)}</div>
+          </div>
+
+          <div class="card-metrics-row">
+            <span style="font-size: 0.75rem; color: #000; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+              <i class="ph ph-at"></i>
+              Threads VN
+            </span>
+
+            <a href="${escapeHtml(postUrl)}" target="_blank" rel="noopener noreferrer" class="btn-link" title="Mở xem bài viết chính trên Threads" style="background: #0f172a; color: #ffffff; border: 1px solid #0f172a;">
+              <i class="ph ph-chat-circle-dots"></i>
+              <span>Xem bài viết Threads gốc</span>
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+  }).join('');
+}
+
+// ─── TAB SWITCHING ──────────────────────────────────────────────
+window.switchGroupTab = function(groupId, btn) {
+  state.currentGroupFilter = groupId;
+  document.querySelectorAll('.section-col:first-child .tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGroupPosts();
+};
+
+window.switchPlatformTab = function(platform, btn) {
+  state.currentPlatform = platform;
+  document.querySelectorAll('.section-col:last-child .tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTrends();
+};
+
+// ─── SCANNING & PROGRESS POLLING ────────────────────────────────
+window.triggerScanFB = async function() {
+  const btn = document.getElementById('btnScanFB');
+  if (btn) btn.disabled = true;
+
+  try {
+    const res = await fetch('http://localhost:3000/api/groups/scrape-live', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      showToast('⚡ Bắt đầu quét 4 Group Facebook...', true);
+      startPollingProgress('groups');
+    } else {
+      showToast('⚠️ ' + data.message, false);
+      if (btn) btn.disabled = false;
+    }
+  } catch (err) {
+    showToast('❌ Lỗi kết nối server: ' + err.message, false);
+    if (btn) btn.disabled = false;
+  }
+};
+
+window.triggerScanTikTok = async function() {
+  const btn = document.getElementById('btnScanTikTok');
+  if (btn) btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/tiktok/scrape-live', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      showToast('🎵 Bắt đầu quét xu hướng TikTok VN độc lập...', true);
+      startPollingProgress('tiktok');
+    } else {
+      showToast('⚠️ ' + data.message, false);
+      if (btn) btn.disabled = false;
+    }
+  } catch (err) {
+    showToast('❌ Lỗi kết nối server: ' + err.message, false);
+    if (btn) btn.disabled = false;
+  }
+};
+
+window.triggerScanThreads = async function() {
+  const btn = document.getElementById('btnScanThreads');
+  if (btn) btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/threads/scrape-live', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      showToast('🧵 Bắt đầu quét xu hướng Threads VN độc lập...', true);
+      startPollingProgress('threads');
+    } else {
+      showToast('⚠️ ' + data.message, false);
+      if (btn) btn.disabled = false;
+    }
+  } catch (err) {
+    showToast('❌ Lỗi kết nối server: ' + err.message, false);
+    if (btn) btn.disabled = false;
+  }
+};
+
+window.triggerScanSocial = async function() {
+  // Backward compatibility
+  await triggerScanTikTok();
+};
+
+function startPollingProgress(scanType) {
+  const banner = document.getElementById('scanProgressBanner');
+  const title = document.getElementById('scanProgressTitle');
+  const percentEl = document.getElementById('scanProgressPercent');
+  const bar = document.getElementById('scanProgressBar');
+
+  if (banner) banner.style.display = 'flex';
+
+  clearInterval(state.scanPollingTimer);
+  state.scanPollingTimer = setInterval(async () => {
+    try {
+      const res = await fetch('http://localhost:3000/api/scan-status');
+      const data = await res.json();
+      if (!data.success || !data.data) return;
+
+      const info = data.data[scanType];
+      if (info) {
+        if (title) title.textContent = info.message || 'Đang xử lý dữ liệu...';
+        if (percentEl) percentEl.textContent = `${info.percent || 0}%`;
+        if (bar) bar.style.width = `${info.percent || 0}%`;
+
+        // Nếu quét xong
+        if (!info.isRunning && info.percent >= 100) {
+          clearInterval(state.scanPollingTimer);
+          setTimeout(async () => {
+            if (banner) banner.style.display = 'none';
+            const btnFB = document.getElementById('btnScanFB');
+            const btnTT = document.getElementById('btnScanTikTok');
+            const btnTH = document.getElementById('btnScanThreads');
+            if (btnFB) btnFB.disabled = false;
+            if (btnTT) btnTT.disabled = false;
+            if (btnTH) btnTH.disabled = false;
+            await loadAllData();
+            showToast('✅ Đã cập nhật xong dữ liệu mới nhất!', true);
+          }, 1500);
+        }
+      }
+    } catch (e) {
+      console.warn('Lỗi polling status:', e);
+    }
+  }, 1200);
+}
+
+// ─── COOKIE MODAL ───────────────────────────────────────────────
+window.openCookieModal = function() {
+  document.getElementById('modalCookie').style.display = 'flex';
+};
+
+window.closeCookieModal = function() {
+  document.getElementById('modalCookie').style.display = 'none';
+};
+
+window.saveCookie = async function() {
+  const cookie = document.getElementById('txtCookie').value.trim();
+  if (!cookie) return alert('Vui lòng dán chuỗi cookie!');
+
+  try {
+    const res = await fetch('http://localhost:3000/api/groups/import-cookie', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cookie })
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast('✅ ' + data.message, true);
+      closeCookieModal();
+    } else {
+      alert('Lỗi: ' + data.message);
+    }
+  } catch (e) {
+    alert('Lỗi: ' + e.message);
+  }
+};
+
+// ─── INITIALIZATION ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+
+  // Khởi tạo ngay từ dữ liệu nhúng sẵn (hiển thị lập tức cả khi offline)
+  state.groupPosts = EMBEDDED_DATA.group_posts || [];
+  state.trends = EMBEDDED_DATA.trends || { tiktok: [], threads: [] };
+  state.stats = {
+    totalPosts: 20,
+    totalEngagement: 3566,
+    totalTrends: 6,
+    lastUpdated: "2026-09-24T11:33:18.395Z"
+  };
+  renderGroupPosts();
+  renderTrends();
+  renderStats();
+
+  startClock();
+  await checkServerStatus();
+  await loadAllData();
+
+  // Heartbeat check mỗi 15 giây
+  setInterval(checkServerStatus, 15000);
+});
+
+  </script>
+
+</body>
+</html>

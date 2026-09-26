@@ -1,0 +1,245 @@
+{
+  "platform": "tiktok",
+  "market": "VN",
+  "scan_id": "scan_1_1790360044185",
+  "scan_number": 1,
+  "scan_kind": "BASELINE_SCAN",
+  "scan_time": "2026-09-25T18:14:04.185Z",
+  "execution_status": "COMPLETED",
+  "data_quality_status": "FULL",
+  "browser_execution_mode": "HEADLESS_AUTOMATED",
+  "topics": [],
+  "new_topics": [],
+  "watchlist": [
+    {
+      "candidate_key": "search_query:lifestyle living",
+      "canonical_label": "lifestyle living",
+      "status": "INCONCLUSIVE",
+      "latest_check_status": "INCONCLUSIVE",
+      "reason": "Có tín hiệu phân tán (2 video liên quan từ 5 creators) nhưng chưa đủ bằng chứng replication rõ nét; giữ trạng thái chờ. [Bản chất tín hiệu: possible campaign-driven]",
+      "first_seen": "2026-09-24T21:03:20.571Z",
+      "last_checked_at": "2026-09-24T21:03:20.571Z",
+      "recheck_on_next_discovery": true,
+      "aliases": [
+        "lifestyle living"
+      ],
+      "provenance": [
+        {
+          "surface_scope": "authenticated_personalized",
+          "source": "tiktok_explore",
+          "original_key": "search_query:lifestyle living",
+          "original_label": "lifestyle living"
+        }
+      ],
+      "status_history": [
+        {
+          "timestamp": "2026-09-24T21:03:20.571Z",
+          "status": "INCONCLUSIVE",
+          "details": "Có tín hiệu phân tán (2 video liên quan từ 5 creators) nhưng chưa đủ bằng chứng replication rõ nét; giữ trạng thái chờ. [Bản chất tín hiệu: possible campaign-driven]"
+        }
+      ]
+    },
+    {
+      "candidate_key": "hashtag:mylivejourney",
+      "canonical_label": "mylivejourney",
+      "status": "RETRIEVAL_INCONCLUSIVE",
+      "latest_check_status": "ACCESS_RESTRICTED",
+      "reason": "Screening could not collect sufficient evidence because TikTok Search access was restricted.",
+      "first_seen": "2026-09-24T14:11:38.986Z",
+      "last_checked_at": "2026-09-25T07:13:46.326Z",
+      "recheck_on_next_discovery": true,
+      "aliases": [
+        "mylivejourney",
+        "#mylivejourney"
+      ],
+      "provenance": [
+        {
+          "surface_scope": "market_structured",
+          "source": "creative_center_7d",
+          "observation_id": "hashtag:mylivejourney"
+        }
+      ],
+      "status_history": [
+        {
+          "timestamp": "2026-09-24T14:11:38.986Z",
+          "status": "DISCOVERED",
+          "source": "creative_center_7d",
+          "details": "Creative Center 7d rank #1 (13.4K posts, 23.2M views)"
+        },
+        {
+          "timestamp": "2026-09-24T21:09:59.000Z",
+          "status": "RETRIEVAL_INCONCLUSIVE",
+          "source": "search_reconciliation",
+          "details": "TikTok Web không trả về kết quả hoặc bị hạn chế truy xuất cho hashtag #mylivejourney trên môi trường desktop hiện tại."
+        },
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "ACCESS_RESTRICTED",
+          "source": "scan_2_validation",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        },
+        {
+          "timestamp": "2026-09-25T07:13:46.326Z",
+          "status": "RETRIEVAL_INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        }
+      ]
+    },
+    {
+      "candidate_key": "topic:vũ trụ ai",
+      "canonical_label": "vũ trụ ai",
+      "status": "INCONCLUSIVE",
+      "latest_check_status": "ACCESS_RESTRICTED",
+      "reason": "Screening could not collect sufficient evidence because TikTok Search access was restricted.",
+      "first_seen": "2026-09-24T23:22:02.961Z",
+      "last_checked_at": "2026-09-24T23:22:02.961Z",
+      "recheck_on_next_discovery": true,
+      "aliases": [
+        "vũ trụ ai"
+      ],
+      "provenance": [
+        {
+          "surface_scope": "authenticated_personalized",
+          "source": "tiktok_explore",
+          "original_key": "topic:vũ trụ ai",
+          "original_label": "vũ trụ ai"
+        }
+      ],
+      "status_history": [
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        },
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        },
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        },
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        }
+      ]
+    },
+    {
+      "candidate_key": "topic:hari won(원하리)",
+      "canonical_label": "hari won(원하리)",
+      "status": "INCONCLUSIVE",
+      "latest_check_status": "ACCESS_RESTRICTED",
+      "reason": "Screening could not collect sufficient evidence because TikTok Search access was restricted.",
+      "first_seen": "2026-09-24T23:22:02.961Z",
+      "last_checked_at": "2026-09-24T23:22:02.961Z",
+      "recheck_on_next_discovery": true,
+      "aliases": [
+        "hari won(원하리)"
+      ],
+      "provenance": [
+        {
+          "surface_scope": "authenticated_personalized",
+          "source": "tiktok_explore",
+          "original_key": "topic:hari won(원하리)",
+          "original_label": "hari won(원하리)"
+        }
+      ],
+      "status_history": [
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        },
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        },
+        {
+          "timestamp": "2026-09-24T23:22:02.961Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        }
+      ]
+    },
+    {
+      "candidate_key": "hashtag:2425luongve",
+      "canonical_label": "2425luongve",
+      "status": "INCONCLUSIVE",
+      "latest_check_status": "ACCESS_RESTRICTED",
+      "reason": "Screening could not collect sufficient evidence because TikTok Search access was restricted.",
+      "first_seen": "2026-09-25T14:53:47.424Z",
+      "last_checked_at": "2026-09-25T14:53:47.424Z",
+      "recheck_on_next_discovery": true,
+      "aliases": [
+        "2425luongve"
+      ],
+      "provenance": [
+        {
+          "surface_scope": "authenticated_personalized",
+          "source": "tiktok_explore",
+          "original_key": "hashtag:2425luongve",
+          "original_label": "2425luongve"
+        }
+      ],
+      "status_history": [
+        {
+          "timestamp": "2026-09-25T14:53:47.424Z",
+          "status": "INCONCLUSIVE",
+          "details": "Screening could not collect sufficient evidence because TikTok Search access was restricted."
+        }
+      ]
+    }
+  ],
+  "source_runs": [
+    {
+      "source": "creative_center_7d",
+      "status": "SUCCESS",
+      "raw_items_found": 0,
+      "candidates_kept": 0,
+      "error": null,
+      "note": "Unauthenticated view currently exposes only 3 rows before the login gate. Authenticated access may expose additional rows; exact count has not yet been verified in this environment."
+    },
+    {
+      "source": "creative_center_30d",
+      "status": "SUCCESS",
+      "raw_items_found": 3,
+      "candidates_kept": 3,
+      "error": null,
+      "note": "Unauthenticated view currently exposes only 3 rows before the login gate. Authenticated access may expose additional rows; exact count has not yet been verified in this environment."
+    },
+    {
+      "source": "tiktok_search_ui",
+      "status": "NO_RESULTS",
+      "raw_items_found": 0,
+      "candidates_kept": 0,
+      "error": null,
+      "note": "Extracted via playwright_persistent_authenticated_profile"
+    },
+    {
+      "source": "explore_authenticated",
+      "status": "SUCCESS",
+      "raw_items_found": 4,
+      "candidates_kept": 4,
+      "error": null,
+      "note": "Extracted via playwright_persistent_authenticated_profile"
+    },
+    {
+      "source": "creator_search_insights",
+      "status": "UNAVAILABLE_IN_CURRENT_ENVIRONMENT",
+      "raw_items_found": 0,
+      "candidates_kept": 0,
+      "error": "Could not access Creator Search Insights through the current desktop execution path."
+    }
+  ],
+  "methodology": {
+    "score_version": "v1",
+    "momentum_method_version": "v1",
+    "lifecycle_rule_version": "v1"
+  },
+  "limitations": []
+}

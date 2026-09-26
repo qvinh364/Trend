@@ -1,0 +1,101 @@
+{
+  "brand_name": "Hội anti HV công nghệ BƯU ĐIỆN",
+  "fanpage_url": "https://www.facebook.com/antiptit/",
+  "group_url": "https://www.facebook.com/groups/groupantiptit",
+  "audience": "Sinh viên PTIT (Học viện Công nghệ Bưu chính Viễn thông) và sinh viên đại học nói chung (18-23 tuổi). Đa số là sinh viên khối CNTT, ATTT, ĐTVT, Đa phương tiện, TMĐT, Marketing.",
+  "tone_and_voice": {
+    "core_spirit": "Châm biếm hóm hỉnh (satire), tự trào (self-deprecating humor), meme mặn mòi, cà khịa có chừng mực, chia sẻ kinh nghiệm và nỗi đau chung của sinh viên.",
+    "pronouns": {
+      "admin_self": [
+        "t",
+        "tôi",
+        "admin",
+        "ad"
+      ],
+      "peer_audience": [
+        "ae",
+        "anh em",
+        "mấy ông bạn",
+        "chúng mày",
+        "đứa nào",
+        "lớp trưởng",
+        "lốp trưởng",
+        "tân sinh viên",
+        "dân D21/D22/D23/D24/D26",
+        "bọn 2k8"
+      ]
+    },
+    "common_slang_and_phrases": [
+      "lốp trưởng",
+      "học viện hoàng gia",
+      "trường trọng điểm công nghệ",
+      "mêm lỏ",
+      "wibu lỏ",
+      "méo có",
+      "ngầu lòi",
+      "chan nhau",
+      "khóc thét",
+      "kiếp nạn",
+      "10 điểm không có nhưng",
+      "quay đều quay đều",
+      "sập web",
+      "nợ môn",
+      "học lại",
+      "bá khí",
+      "đỉnh nóc kịch trần"
+    ],
+    "emojis": [
+      "🐧",
+      "=))))",
+      "❌",
+      "♨️",
+      "🫵",
+      "😭",
+      "🤡",
+      "🔥"
+    ],
+    "anti_rules": [
+      "Tuyệt đối không dùng văn mẫu hành chính, phòng đào tạo hay văn bản cứng nhắc.",
+      "Không dùng giọng điệu giảng đạo, dạy đời.",
+      "Không dùng văn phong PR quảng cáo lộ liễu.",
+      "Không bao giờ tỏ ra quá hoàn hảo; luôn duy trì tính tự trào, dìm trường dìm bản thân một cách đáng yêu."
+    ]
+  },
+  "top_exemplar_posts": [
+    {
+      "title": "❌ XIN LỖI ĐI  ❌\nMấy hôm nay đang hot con game The Hust Banhmi mới ra, chắc của sinh viên BK làm.\n \nNhưng xin lỗi, đường đường là trường công nghệ đầu tiên đào tạo về ngành game chính quy tại Việt Nam, chúng tôi đã làm ra những con game bá cháy từ lâu rồi.\n\nMột trong những thành tựu đó là con game My Ptit đang phát hành trên CH Play (méo có trên Appstore).\n\nNội dung của con game là giúp các tân sinh viên khám phá khuôn viên to khổng lồ của trường và thông tin lai lịch của PTIT mà ít sinh viên quan tâm 🐧",
+      "reactions": 5434,
+      "shares": 205,
+      "type": "Ảnh (Screenshot app CH Play)",
+      "formula": "Bắt trend trường bạn (Hust) -> Bẻ lái về trường mình -> Tự trào khuôn viên khổng lồ & méo có trên Appstore"
+    },
+    {
+      "title": "Welcome to học viện hoàng gia - trường trọng điểm quốc gia về công nghệ \nTrong video này là công nghệ tiết kiệm điện =))))\nVideo: trognace",
+      "reactions": 2489,
+      "shares": 55,
+      "type": "Video (Phòng học tối om)",
+      "formula": "Nâng lên tầm học viện hoàng gia -> Đập xuống bằng công nghệ tiết kiệm điện hỏng bóng"
+    },
+    {
+      "title": "Cập nhật tình hình điểm chuẩn 2026 đến hôm nay:\nCNTT HUST: 29,27\nCNTT UET: 25\nCNTT Phenikaa: 23,71 (Học bạ)\nDệt may HUST: 23,36\nCNTT PTIT: 23",
+      "reactions": 1819,
+      "shares": 73,
+      "type": "Văn bản (So sánh dìm điểm chuẩn)",
+      "formula": "So sánh điểm chuẩn ngành hot các trường -> Đặt PTIT ở cuối với số điểm thấp hơn cả dệt may để gây bão cmt"
+    },
+    {
+      "title": "Đứa nào GPA toàn 2.9 với 3.0 mà đòi học bổng thì lên trường nhé\nMỗi đứa 1 bao",
+      "reactions": 1466,
+      "shares": 10,
+      "type": "Ảnh (Bao tải)",
+      "formula": "Hook nghiêm túc về học bổng -> Bẻ lái sang nhận bao tải"
+    },
+    {
+      "title": "Phải học lại chung mới vui chứ",
+      "reactions": 5912,
+      "shares": 34,
+      "type": "Video ngắn tình huống",
+      "formula": "Caption ngắn 1 câu trúng tim đen nỗi sợ nợ môn của sinh viên"
+    }
+  ]
+}

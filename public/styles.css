@@ -1,0 +1,64 @@
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Active filter buttons */
+.grp-filter-btn.active {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.grp-filter-btn:not(.active) {
+  color: #94a3b8;
+}
+.grp-filter-btn:not(.active):hover {
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.trend-filter-btn.active {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.trend-filter-btn:not(.active) {
+  color: #94a3b8;
+}
+.trend-filter-btn:not(.active):hover {
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
+/* Card hover animation */
+.trend-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trend-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.group-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.5);
+}

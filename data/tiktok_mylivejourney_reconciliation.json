@@ -1,0 +1,7 @@
+{
+  "candidate_key": "hashtag:mylivejourney",
+  "retrieval_conflict": true,
+  "reconciliation_status": "RETRIEVAL_INCONCLUSIVE",
+  "reconciliation_reason": "TikTok Web không trả về kết quả hoặc bị hạn chế truy xuất cho hashtag #mylivejourney trên môi trường desktop hiện tại.",
+  "evidence_inspected": []
+}

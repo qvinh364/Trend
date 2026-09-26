@@ -1,0 +1,35 @@
+{
+  "facebook_groups": [
+    {
+      "id": "2k5ptit",
+      "name": "Cộng đồng sinh viên PTIT (2k5)",
+      "url": "https://www.facebook.com/groups/2k5ptit",
+      "priority": "high",
+      "description": "Nhóm thảo luận chính của sinh viên PTIT về học tập, nợ môn, chia sẻ tài liệu"
+    },
+    {
+      "id": "408571091380061",
+      "name": "Góc thông tin PTIT",
+      "url": "https://www.facebook.com/groups/408571091380061",
+      "priority": "high",
+      "description": "Nơi cập nhật thông báo học vụ, lịch thi, học phí, tìm đồ thất lạc"
+    },
+    {
+      "id": "1605563914144178",
+      "name": "Group D26 PTIT (2k8)",
+      "url": "https://www.facebook.com/groups/1605563914144178",
+      "priority": "high",
+      "description": "Tân sinh viên D26 mới vào trường, thắc mắc thủ tục nhập học, tìm bạn cùng phòng"
+    }
+  ],
+  "keywords": [
+    "PTIT",
+    "sinh viên PTIT",
+    "học viện công nghệ bưu chính viễn thông",
+    "trường bưu chính",
+    "bưu điện",
+    "qldt",
+    "thực tập IT",
+    "D26 PTIT"
+  ]
+}

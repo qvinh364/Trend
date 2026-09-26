@@ -1,0 +1,613 @@
+{
+  "trends": {
+    "google": [
+      {
+        "id": "gt_0_1790168028668",
+        "platform": "google",
+        "title": "lịch thi đấu fifa asian cup",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Việt Nam đến Indonesia, bắt đầu FIFA ASEAN Cup"
+        ],
+        "link": [
+          "https://vnexpress.net/viet-nam-den-indonesia-bat-dau-fifa-asean-cup-5123839.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 05:30:00 -0700",
+        "category": "Giáo dục & Thi cử",
+        "relevance_score": 95,
+        "relevance_tier": "high",
+        "pivot_angle": "Trúng tâm điểm sinh viên: Áp dụng so sánh trực tiếp với tình hình thi cử, học bổng hoặc điểm số tại PTIT.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_1_1790168028668",
+        "platform": "google",
+        "title": "bảo hiểm y tế",
+        "viral_metrics": "2000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Dự kiến bổ sung thuốc ung thư thế hệ mới vào danh mục bảo hiểm y tế chi trả"
+        ],
+        "link": [
+          "https://kenh14.vn/du-kien-bo-sung-thuoc-ung-thu-the-he-moi-vao-danh-muc-bao-hiem-y-te-chi-tra-215260923091001141.chn"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:40:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_2_1790168028668",
+        "platform": "google",
+        "title": "đội tuyển bóng đá u-23 quốc gia kyrgyzstan đấu với u-23 hồng kông",
+        "viral_metrics": "1000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Nhận định bóng đá U23 Kyrgyzstan vs U23 Hong Kong, 17h30 ngày 23/9: Gỡ gạc danh dự"
+        ],
+        "link": [
+          "https://bongdaplus.vn/asian-games/nhan-dinh-bong-da-u23-kyrgyzstan-vs-u23-hong-kong-17h30-ngay-23-9-go-gac-danh-du-5171362609.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:40:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_3_1790168028668",
+        "platform": "google",
+        "title": "dự báo",
+        "viral_metrics": "200000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Mưa lớn ở Nam bộ kéo dài đến khi nào?"
+        ],
+        "link": [
+          "https://thanhnien.vn/mua-lon-o-nam-bo-keo-dai-den-khi-nao-185260923122215352.htm"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:20:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_4_1790168028668",
+        "platform": "google",
+        "title": "u-23 nhật bản đấu với u-23 thái lan",
+        "viral_metrics": "20000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Trực tiếp bóng đá U23 Nhật Bản - U23 Thái Lan: \"Samurai xanh\" vượt lên (ASIAD)"
+        ],
+        "link": [
+          "https://www.24h.com.vn/bong-da/truc-tiep-bong-da-u23-nhat-ban-u23-thai-lan-chu-nha-lieu-co-thi-uy-suc-manh-asiad-c48a1797041.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:10:00 -0700",
+        "category": "Công nghệ & Game",
+        "relevance_score": 92,
+        "relevance_tier": "high",
+        "pivot_angle": "Khối ngành thế mạnh PTIT (CNTT, Game): Khen hoặc cà khịa sản phẩm dưới góc nhìn của một lập trình viên / dev Bưu Chính.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_5_1790168028668",
+        "platform": "google",
+        "title": "xe điện",
+        "viral_metrics": "2000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Ôtô điện giá 123 triệu đồng sắp bán tại Việt Nam"
+        ],
+        "link": [
+          "https://vnexpress.net/oto-dien-gia-123-trieu-dong-sap-ban-tai-viet-nam-5123710.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 03:10:00 -0700",
+        "category": "Kinh tế & Đời sống",
+        "relevance_score": 88,
+        "relevance_tier": "high",
+        "pivot_angle": "Chuyện tiền nong sinh viên: Nối sang chi phí sinh hoạt, cơm trọ Phùng Khoang và áp lực tăng học phí của trường.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_6_1790168028668",
+        "platform": "google",
+        "title": "lãi suất ngân hàng hôm nay",
+        "viral_metrics": "1000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Lãi suất ngân hàng tháng 9/2026: Thêm nhiều ngân hàng trả lãi tiết kiệm trên 9%"
+        ],
+        "link": [
+          "https://vnexpress.net/them-nhieu-ngan-hang-tra-lai-tiet-kiem-tren-9-5123534.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 01:50:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_7_1790168028668",
+        "platform": "google",
+        "title": "bảo hiểm",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Đề xuất đưa tài xế công nghệ vào diện đóng bảo hiểm xã hội bắt buộc"
+        ],
+        "link": [
+          "https://vnexpress.net/de-xuat-dua-tai-xe-cong-nghe-vao-dien-dong-bao-hiem-xa-hoi-bat-buoc-5123595.html"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 01:00:00 -0700",
+        "category": "Công nghệ & Game",
+        "relevance_score": 92,
+        "relevance_tier": "high",
+        "pivot_angle": "Khối ngành thế mạnh PTIT (CNTT, Game): Khen hoặc cà khịa sản phẩm dưới góc nhìn của một lập trình viên / dev Bưu Chính.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_8_1790168028668",
+        "platform": "google",
+        "title": "đỗ hoàng hên",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Hoàng Hên bị giữ lại kiểm tra an ninh trước giờ đội tuyển Việt Nam đi Indonesia"
+        ],
+        "link": [
+          "https://tuoitre.vn/hoang-hen-bi-giu-lai-kiem-tra-an-ninh-truoc-gio-doi-tuyen-viet-nam-di-indonesia-100260923082539675.htm"
+        ],
+        "pubDate": "Wed, 23 Sep 2026 00:20:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      },
+      {
+        "id": "gt_9_1790168028668",
+        "platform": "google",
+        "title": "xe đạp điện",
+        "viral_metrics": "5000+ lượt tìm kiếm",
+        "viral_score": 99,
+        "description": [
+          "Cô gái 18 tuổi bị khởi tố sau vụ xe đạp điện tông cụ bà tử vong"
+        ],
+        "link": [
+          "https://vietnamnet.vn/co-gai-18-tuoi-bi-khoi-to-sau-vu-xe-dap-dien-tong-cu-ba-tu-vong-2557850.html"
+        ],
+        "pubDate": "Tue, 22 Sep 2026 21:10:00 -0700",
+        "category": "Xã hội & Xu hướng",
+        "relevance_score": 65,
+        "relevance_tier": "medium",
+        "pivot_angle": "Sự kiện nóng trên mạng: Xem xét làm meme phản ứng của sinh viên PTIT trước sự kiện này.",
+        "author": "Google Trends Vietnam"
+      }
+    ],
+    "tiktok": [
+      {
+        "id": "tt_live_1790245423071_1",
+        "platform": "tiktok",
+        "title": "Trend: \"trend tiktok vn\" (Hot Search)",
+        "search_keyword": "trend tiktok vn",
+        "type": "Format / Sound lặp lại",
+        "sound": "Âm thanh thịnh hành trên TikTok VN",
+        "viral_metrics": "17.8K • Nhiều Creator cùng tham gia",
+        "viral_score": 94,
+        "description": "Em có bàn tay (DC:@Anh Chủ OTea) #phattrann #fyp #xuhuong #tiktokdancevn",
+        "link": "https://www.tiktok.com/@huuphattran3/video/7681656126114467093",
+        "category": "Xu hướng TikTok VN",
+        "sample_videos_count": 2,
+        "created_at": "2026-09-24T10:23:43.071Z"
+      },
+      {
+        "id": "tt_live_1790245428010_2",
+        "platform": "tiktok",
+        "title": "Trend: \"sinh vien gen z\" (Hot Search)",
+        "search_keyword": "sinh vien gen z",
+        "type": "Format / Sound lặp lại",
+        "sound": "Âm thanh thịnh hành trên TikTok VN",
+        "viral_metrics": "1825 • Nhiều Creator cùng tham gia",
+        "viral_score": 96,
+        "description": "Team Gen Z nào đang ấp ủ những ý tưởng \"khủng\" thì đừng ngần ngại thử sức ở mùa sau nhé! 💪",
+        "link": "https://www.tiktok.com/@nhatkycuameichan/video/7595915226269142290",
+        "category": "Xu hướng TikTok VN",
+        "sample_videos_count": 2,
+        "created_at": "2026-09-24T10:23:48.010Z"
+      },
+      {
+        "id": "tt_live_1790245433243_3",
+        "platform": "tiktok",
+        "title": "Trend: \"review phong tro\" (Hot Search)",
+        "search_keyword": "review phong tro",
+        "type": "Format / Sound lặp lại",
+        "sound": "Âm thanh thịnh hành trên TikTok VN",
+        "viral_metrics": "3384 • Nhiều Creator cùng tham gia",
+        "viral_score": 96,
+        "description": "🏡 Phòng mới keng 100%, nội thất full bài! ✨",
+        "link": "https://www.tiktok.com/@binhifrdz/video/7652617230089506056",
+        "category": "Xu hướng TikTok VN",
+        "sample_videos_count": 3,
+        "created_at": "2026-09-24T10:23:53.243Z"
+      }
+    ],
+    "threads": [
+      {
+        "id": "th_live_1790245442618_1",
+        "platform": "threads",
+        "author": "@threads_community",
+        "title": "Chủ đề hot: \"áp lực tài chính sinh viên\"",
+        "search_keyword": "áp lực tài chính sinh viên",
+        "content": "Topic \"áp lực tài chính sinh viên\" đang thu hút hàng ngàn lượt tương tác và tranh cãi trên Threads.",
+        "viral_metrics": "Hàng ngàn thảo luận • Tương tác cao",
+        "viral_score": 97,
+        "link": "https://www.threads.net/search?q=%C3%A1p%20l%E1%BB%B1c%20t%C3%A0i%20ch%C3%ADnh%20sinh%20vi%C3%AAn",
+        "category": "Tranh cãi & Đời sống Gen Z",
+        "created_at": "2026-09-24T10:24:02.618Z"
+      },
+      {
+        "id": "th_live_1790245445668_2",
+        "platform": "threads",
+        "author": "@threads_community",
+        "title": "Chủ đề hot: \"chuyện phòng trọ hà nội\"",
+        "search_keyword": "chuyện phòng trọ hà nội",
+        "content": "Topic \"chuyện phòng trọ hà nội\" đang thu hút hàng ngàn lượt tương tác và tranh cãi trên Threads.",
+        "viral_metrics": "Hàng ngàn thảo luận • Tương tác cao",
+        "viral_score": 94,
+        "link": "https://www.threads.net/search?q=chuy%E1%BB%87n%20ph%C3%B2ng%20tr%E1%BB%8D%20h%C3%A0%20n%E1%BB%99i",
+        "category": "Tranh cãi & Đời sống Gen Z",
+        "created_at": "2026-09-24T10:24:05.668Z"
+      },
+      {
+        "id": "th_live_1790245451484_3",
+        "platform": "threads",
+        "author": "@threads_community",
+        "title": "Chủ đề hot: \"thực tập sinh it\"",
+        "search_keyword": "thực tập sinh it",
+        "content": "1m",
+        "viral_metrics": "Hàng ngàn thảo luận • Tương tác cao",
+        "viral_score": 97,
+        "link": "https://www.threads.com/@dotuimayeptao.kakaa/post/DdqqQPSCYCJ",
+        "category": "Tranh cãi & Đời sống Gen Z",
+        "created_at": "2026-09-24T10:24:11.484Z"
+      }
+    ]
+  },
+  "group_posts": [
+    {
+      "id": "live_2k5ptit_8_1790065009499",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282556550620186",
+      "content": "Sáng nay bạn nào để quên điện thoại liên hệ nhé Nam thì 1 nụ hôn lốc xoáy, nữ thì thôi",
+      "author": "Bảo Khang",
+      "likes": 623,
+      "comments": 79,
+      "shares": 2,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 16:13",
+      "engagement_score": 704,
+      "created_at": "2026-09-22T08:16:49.499Z",
+      "rank": 1,
+      "is_top_week": true
+    },
+    {
+      "id": "live_2k5ptit_19_1790065009500",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1281362730739568",
+      "content": "T đã bị sốc văn hóa khi học ở PTIT cơ sở Ngọc Trục. Chuyện sẽ không có gì, như thường ngày t sẽ về nhà sau tiết học 19-19r ở trường. NHƯNG KHÔNGGGGGGG. Khi t xuống bãi gửi xe, XE T BỊ KHÓA. Tôi đi hỏi các bác gần đó thì được tin \" CÁC BÁC ĐI ĂN RỒI CHÁU\", tôi cũng ok. Và sau 15p 20p, các bác trở lại....\"TỰ BẮT XE VỀ ĐI, SÁNG MAI QUAY LẠI LẤY XE\". Tôi xin nhắc lại NHÀ TÔI CÁCH TRƯỜNG GẦN 10 CÂY. T đã ngồi đó xin xỏ, năn nỉ 1 tiếng hơn, dù bị bảo l",
+      "author": "Người tham gia ẩn danh",
+      "likes": 363,
+      "comments": 143,
+      "timestamp": "Thứ bảy, 19 Tháng 9, 2026 lúc 21:51",
+      "engagement_score": 510,
+      "created_at": "2026-09-22T08:16:49.500Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 4
+    },
+    {
+      "id": "live_2k5ptit_5_1790065009499",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282557173953457",
+      "content": "Các con ơi ơi học kỹ thuật trường mình nặng và vất vả lắm hay sao mà con trai cô, cô giao việc nhà cho con vì con năm 3 rồi, mà lúc nào cháu cũng bảo với mẹ là con học nặng rồi, đầu óc đâu làm việc nhà. Cô phải dọn phòng cho con trai, đi làm về còn nhặt từng cọng rau mà cô k biết có đúng là cháu học nhiều không. Đóng cửa phong học suốt vì con nói cần yên tĩnh. Cô k hiểu biết nên lên hỏi các con. Các con giúp cô nha.",
+      "author": "BronzeHummingbird8722",
+      "likes": 215,
+      "comments": 75,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 10:35",
+      "engagement_score": 294,
+      "created_at": "2026-09-22T08:16:49.499Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 4
+    },
+    {
+      "id": "live_2k5ptit_23_1790065009500",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282332907309217",
+      "content": "Mọi người ơi, cho tớ xin chút lời khuyên với... Nhưng dạo gần đây, mọi thứ lạnh nhạt đi hẳn. Tần suất nhắn tin thưa dần, những câu chuyện cứ ngắn ngủn và kết thúc trong sự hụt hẫng. Tớ buồn lắm mà con gái thì ngại ngùng, không dám mở lời trước vì sợ bản thân trở nên phiền phức. Theo mọi người, … Xem thêm",
+      "author": "Người tham gia ẩn danh",
+      "likes": 127,
+      "comments": 131,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 08:12",
+      "engagement_score": 267,
+      "created_at": "2026-09-22T08:16:49.500Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 9
+    },
+    {
+      "id": "live_2k5ptit_9_1790065009499",
+      "source_group": "Cộng đồng sinh viên PTIT (CĐ SV)",
+      "group_id": "2k5ptit",
+      "source_url": "https://www.facebook.com/groups/2k5ptit/posts/1282728217269686",
+      "content": "xe mới đấy nhể chắc chưa bị bẻ cổ phát nào",
+      "author": "messilovebaycho",
+      "likes": 114,
+      "comments": 30,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 17:58",
+      "engagement_score": 145,
+      "created_at": "2026-09-22T08:16:49.499Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 1
+    },
+    {
+      "id": "live_408571091380061_0_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1451908050379688",
+      "content": "Chính thức ra mắt CLB LGBT - Luôn Giữ Bình Tĩnh Thông Tin: CLB do cá nhân thành lập không liên kết với bất kỳ đơn vị hay nhà trường nào Mục đích: Tạo sân chơi kết nốt các bạn Luôn Giữ Bình Tĩnh 7 Trường ĐH và Học Viện trong khu vực Từ Hầm Chui Thanh Xuân - Nguyễn Trãi đến Hết Đường Trần Phú",
+      "author": "Dr.Chạm",
+      "likes": 557,
+      "comments": 230,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 01:39",
+      "engagement_score": 797,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 1,
+      "is_top_week": true,
+      "shares": 10
+    },
+    {
+      "id": "live_408571091380061_24_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1450797463824080",
+      "content": "Bên hust căng quá",
+      "author": "Người tham gia ẩn danh",
+      "likes": 99,
+      "comments": 11,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 20:46",
+      "engagement_score": 110,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_408571091380061_25_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1452586276978532",
+      "content": "Aura quá yếu? - Bạn muốn có một aura(bá khí) thật mạnh nhưng bản thân không thể toát ra được - Hãy thử những cách sau để gia tăng bá khí lên mức cao",
+      "author": "Lan Trịnh",
+      "likes": 62,
+      "comments": 3,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 21:17",
+      "engagement_score": 72,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 7
+    },
+    {
+      "id": "live_408571091380061_15_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1452610500309443",
+      "content": "FC PTIT CHÍNH THỨC RA QUÂN TẠI SV7 THIÊN KHÔI CUP 2026! Hành trình của những chàng trai CLB Bóng đá Bưu chính – FC PTIT tại SV7 Thiên Khôi Cup 2026 sẽ chính thức bắt đầu vào sáng mai, với đối thủ đầu tiên là Đại học FPT. 09:45 | 22/09/2026 FC PTIT Đại học FPT SVĐ C500 – Hà Đông – Hà Nội Một trận … Xem thêm",
+      "author": "Viết Chiến",
+      "likes": 48,
+      "comments": 6,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 21:45",
+      "engagement_score": 54,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_408571091380061_23_1790065040961",
+      "source_group": "Góc thông tin PTIT",
+      "group_id": "408571091380061",
+      "source_url": "https://www.facebook.com/groups/408571091380061/posts/1452539773649849",
+      "content": "Mn cho mình hỏi bằng khá có lên skhau nhận bằng ko\n hay chỉ giỏi với xs ạ",
+      "author": "Người tham gia ẩn danh",
+      "likes": 17,
+      "comments": 5,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 22:48",
+      "engagement_score": 23,
+      "created_at": "2026-09-22T08:17:20.961Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 1
+    },
+    {
+      "id": "live_1605563914144178_17_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1819248096109091",
+      "content": "Cập nhật tình hình PTIT hiện tạiii\n cháy thí nhỏ",
+      "author": "Thu Phương",
+      "likes": 135,
+      "comments": 7,
+      "timestamp": "Thứ Sáu, 18 Tháng 9, 2026 lúc 23:21",
+      "engagement_score": 144,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 1,
+      "is_top_week": true,
+      "shares": 2
+    },
+    {
+      "id": "live_1605563914144178_0_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1822288609138373",
+      "content": "Sinh viên chắc chắn sẽ cần Nhắn c add nhóm hỗ trợ sv săn hbong nha",
+      "author": "Mai Phạm Diễm Quỳnh",
+      "likes": 43,
+      "comments": 2,
+      "timestamp": "Thứ Ba, 22 Tháng 9, 2026 lúc 10:13",
+      "engagement_score": 69,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 24
+    },
+    {
+      "id": "live_1605563914144178_8_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1821466195887281",
+      "content": "Tân sinh viên của hiện tại: 1 tuần về quê với mẹ 1 lần",
+      "author": "Đặng HồngAnh",
+      "likes": 36,
+      "comments": 5,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 13:14",
+      "engagement_score": 41,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_1605563914144178_16_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1817314092969158",
+      "content": "em được 685 TADV thì em được miễn những course nào ạ",
+      "author": "Quốc Thanh",
+      "likes": 18,
+      "comments": 11,
+      "timestamp": "Thứ Năm, 17 Tháng 9, 2026 lúc 07:32",
+      "engagement_score": 29,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_1605563914144178_20_1790065072825",
+      "source_group": "Group D26 PTIT (2k8)",
+      "group_id": "1605563914144178",
+      "source_url": "https://www.facebook.com/groups/1605563914144178/posts/1819084869458747",
+      "content": "Vâng rấtt ngay đâyy thôi",
+      "author": "Mai Phạm Diễm Quỳnh",
+      "likes": 23,
+      "comments": 1,
+      "timestamp": "Thứ Sáu, 18 Tháng 9, 2026 lúc 18:44",
+      "engagement_score": 24,
+      "created_at": "2026-09-22T08:17:52.825Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_11_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1460408159277014",
+      "content": "TÔI ở phòng 504 ktx B5 hôm nay lên đây tuyển bạn gái anime : yêu cầu : -biết nói tiếng nhật -biết cosplay",
+      "author": "vuatoan2k8",
+      "likes": 30,
+      "comments": 50,
+      "timestamp": "Thứ Năm, 17 Tháng 9, 2026 lúc 23:53",
+      "engagement_score": 80,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 1,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_6_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1463338858983944",
+      "content": "Cần tìm một bạn nam làm người yêu đi chơi trung thu qua trung thu chia tay",
+      "author": "Người tham gia ẩn danh",
+      "likes": 28,
+      "comments": 47,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 19:54",
+      "engagement_score": 77,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 2,
+      "is_top_week": true,
+      "shares": 2
+    },
+    {
+      "id": "live_confessions.ptit_3_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1463352572315906",
+      "content": "Hi tâm sự xíu đc khum. Mình và người yêu quen nhau được 2 năm. Tình cảm thì vẫn còn, tụi mình cũng từng rất nghiêm túc với nhau. Nhưng dạo gần đây, hai đứa bắt đầu bất đồng khá nhiều về chuyện thân mật. Mình thì chưa thật sự sẵn sàng. Mình muốn giữ những giới hạn mà bản thân cảm thấy an toàn và thoải mái. Còn anh ấy lại nghĩ chuyện đó rất quan trọng trong một mối quan hệ, kiểu yêu nhau lâu rồi thì nên có sự gần gũi hơn. Điều làm mình dằn vặt nhất",
+      "author": "Người tham gia ẩn danh",
+      "likes": 25,
+      "comments": 27,
+      "timestamp": "Thứ Hai, 21 Tháng 9, 2026 lúc 17:23",
+      "engagement_score": 52,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 3,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_17_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1461916485792848",
+      "content": "[OFFLINE]\nGIẢI ĐẤU FREE FIRE SINH VIÊN HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG\nHOÀN TOÀN KHÔNG CÓ LỆ PHÍ KHI THAM GIA\nĐây không chỉ là giải đấu… đây còn là sân chơi để sinh viên HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG giao lưu, thể hiện kỹ năng và săn thưởng kim cương cực đỉnh!\n TH… Xem thêm",
+      "author": "Phuc Xuan",
+      "likes": 15,
+      "comments": 34,
+      "timestamp": "Chủ Nhật, 20 Tháng 9, 2026 lúc 00:10",
+      "engagement_score": 49,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 4,
+      "is_top_week": true,
+      "shares": 0
+    },
+    {
+      "id": "live_confessions.ptit_7_1790065106482",
+      "source_group": "PTIT Confessions (PTIT CFS)",
+      "group_id": "confessions.ptit",
+      "source_url": "https://www.facebook.com/groups/confessions.ptit/posts/1463453115639185",
+      "content": "Cho em xin intu anh đẹp zai aura này với ạ, thấy ảnh đứng 1 mình ngầu quá",
+      "author": "Người tham gia ẩn danh",
+      "likes": 18,
+      "comments": 7,
+      "timestamp": "Thứ Ba, 22 Tháng 9, 2026 lúc 10:52",
+      "engagement_score": 25,
+      "created_at": "2026-09-22T08:18:26.482Z",
+      "rank": 5,
+      "is_top_week": true,
+      "shares": 0
+    }
+  ],
+  "saved_ideas": [],
+  "settings": {
+    "geminiApiKey": "",
+    "autoRefreshMinutes": 120,
+    "model": "gemini-2.5-flash"
+  },
+  "last_updated": "2026-09-24T10:24:11.706Z"
+}

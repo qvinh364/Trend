@@ -1,0 +1,70 @@
+[
+  {
+    "source": "tiktok_explore",
+    "surface": "explore_single_signal",
+    "observed_at": "2026-09-25T18:14:03.417Z",
+    "label": "em thích màu blue💙",
+    "candidate_type_hint": "topic",
+    "type_confidence": "LOW",
+    "page_url": "https://www.tiktok.com/explore",
+    "evidence_urls": [
+      "https://www.tiktok.com/@hyzen017/video/7666318205563981077"
+    ],
+    "raw_text": "Em thích màu blue💙",
+    "capture_method": "playwright_persistent_authenticated_profile",
+    "is_mock": false,
+    "seed_origin": null,
+    "seed_label": null
+  },
+  {
+    "source": "tiktok_explore",
+    "surface": "explore_single_signal",
+    "observed_at": "2026-09-25T18:14:03.417Z",
+    "label": "relab xe",
+    "candidate_type_hint": "topic",
+    "type_confidence": "LOW",
+    "page_url": "https://www.tiktok.com/explore",
+    "evidence_urls": [
+      "https://www.tiktok.com/@relabxe/video/7668180662024817928"
+    ],
+    "raw_text": "relab xe",
+    "capture_method": "playwright_persistent_authenticated_profile",
+    "is_mock": false,
+    "seed_origin": null,
+    "seed_label": null
+  },
+  {
+    "source": "tiktok_explore",
+    "surface": "explore_single_signal",
+    "observed_at": "2026-09-25T18:14:03.417Z",
+    "label": "gianshop2002",
+    "candidate_type_hint": "topic",
+    "type_confidence": "LOW",
+    "page_url": "https://www.tiktok.com/explore",
+    "evidence_urls": [
+      "https://www.tiktok.com/@gianshop2002/video/7665973684460457237"
+    ],
+    "raw_text": "gianshop2002",
+    "capture_method": "playwright_persistent_authenticated_profile",
+    "is_mock": false,
+    "seed_origin": null,
+    "seed_label": null
+  },
+  {
+    "source": "tiktok_explore",
+    "surface": "explore_single_signal",
+    "observed_at": "2026-09-25T18:14:03.417Z",
+    "label": "thầy kiêu vật lí",
+    "candidate_type_hint": "topic",
+    "type_confidence": "LOW",
+    "page_url": "https://www.tiktok.com/explore",
+    "evidence_urls": [
+      "https://www.tiktok.com/@thaykieuvatli/video/7659233056766643476"
+    ],
+    "raw_text": "Thầy Kiêu Vật Lí",
+    "capture_method": "playwright_persistent_authenticated_profile",
+    "is_mock": false,
+    "seed_origin": null,
+    "seed_label": null
+  }
+]

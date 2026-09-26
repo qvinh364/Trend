@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": "c_user",
+      "value": "YOUR_FB_C_USER_HERE",
+      "domain": ".facebook.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "xs",
+      "value": "YOUR_FB_XS_TOKEN_HERE",
+      "domain": ".facebook.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

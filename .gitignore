@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Facebook Session & Cookies (SENSITIVE)
+data/fb_session.json
+
+# TikTok Session & Profile (SENSITIVE)
+data/tiktok_browser_profile/
+data/tiktok_session.json
+
+# Local databases, audit logs, caches & test dumps
+data/*.db
+data/*.db-journal
+data/audit/
+data/test_offline_*
+data/tiktok_trend_report.html
+
+# Analytics exports & private reports
+*.csv
+
+# Environment & Temp
+.env
+.env.local
+*.log
+*.metadata.json
+.DS_Store
+Thumbs.db
